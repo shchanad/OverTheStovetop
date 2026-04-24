@@ -51,7 +51,7 @@ func step_backward() -> void:
 	set_state((current_state + (STATES.size() - 1)) % STATES.size())
 
 
-# --- Internal Animation Logic ---
+# --- Internal Animation Logic ---		
 func _animate_rotation(target_degrees: float) -> void:
 	# If the knob is already animating, stop it so we don't get glitchy overlaps
 	if _tween and _tween.is_valid():

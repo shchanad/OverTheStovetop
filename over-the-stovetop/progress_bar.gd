@@ -27,3 +27,7 @@ func _process(delta):
 	if boil_level >= max_level:
 		print("БАБАХ! Еда выкипела!")
 		# Тут можно вызвать функцию взрыва или сброса уровня
+
+func set_heat_power(new_value: float) -> void:
+	heat_power = clampf(new_value, 0.0, 1.0)
+	
