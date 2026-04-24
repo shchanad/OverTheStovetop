@@ -2,22 +2,20 @@ extends Node2D
 class_name Knob
 
 @onready var inner_knob: Sprite2D = $inner
-@onready var outer_knob: Sprite2D = $outer
+#@onready var outer_knob: Sprite2D = $outer
 
 # Emitted whenever the state successfully changes, useful for the parent node
 signal state_changed(new_state: int)
 
-# The 5 distinct rotation states in degrees
+# ANGLES
 const STATES: Array[float] = [0.0, 36.0, 72.0, 108.0, 144.0, 180.0]
 
-# Exposed to the inspector so you can set the starting state (0 to 5)
+# Exposed to the inspector so you can set the starting state
 @export_range(0, 5) var current_state: int = 0
-	#set(value):
-		#set_state(value)
 
 @export_group("Animation")
 @export var anim_duration: float = 0.3
-# Assign a new Curve in the inspector to visually control the animation speed!
+# Assign a new Curve in the inspector to visually control the animation speed.
 @export var custom_curve: Curve 
 # Fallback transition if no custom curve is provided
 @export var fallback_transition: Tween.TransitionType = Tween.TRANS_SINE 
@@ -28,11 +26,10 @@ func _ready() -> void:
 	# Snap to the initial state immediately on load without animating
 	inner_knob.rotation_degrees = STATES[current_state]
 
-# --- Public Methods (Call these from your parent scene) ---
 
+# --- Public Methods (Call these from your parent scene) ---
 func set_state(new_state: int, animate: bool = true) -> void:
-	# Keep the state safely within our 0-4 bounds
-	new_state = clampi(new_state, 0, STATES.size() - 1)
+	new_state = new_state % STATES.size()
 	
 	if current_state == new_state and (_tween == null or not _tween.is_running()):
 		return # We are already in this state and not moving
@@ -48,13 +45,13 @@ func set_state(new_state: int, animate: bool = true) -> void:
 	state_changed.emit(current_state)
 
 func step_forward() -> void:
-	set_state(current_state + 1)
+	set_state((current_state + 1) % STATES.size())
 
 func step_backward() -> void:
-	set_state(current_state - 1)
-	
-# --- Internal Animation Logic ---
+	set_state((current_state + (STATES.size() - 1)) % STATES.size())
 
+
+# --- Internal Animation Logic ---
 func _animate_rotation(target_degrees: float) -> void:
 	# If the knob is already animating, stop it so we don't get glitchy overlaps
 	if _tween and _tween.is_valid():
