@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="OverTheStovetop"
-run/main_scene="uid://cy4qhcmu86v36"
+run/main_scene="uid://64pqdqewvp40"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
