@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy4qhcmu86v36"]
+[gd_scene load_steps=7 format=3 uid="uid://cy4qhcmu86v36"]
 
 [ext_resource type="Script" uid="uid://cc1hge6uw8mrd" path="res://scene.gd" id="1_0hol4"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://knob.gd" id="2_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="3_kdubu"]
 [ext_resource type="Texture2D" uid="uid://obbaar1c8knt" path="res://res/around_knob.png" id="4_d21ai"]
+[ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://progress_bar.gd" id="5_q6r6c"]
 
 [sub_resource type="Curve" id="Curve_0hol4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -23,3 +24,14 @@ texture = ExtResource("3_kdubu")
 
 [node name="outer" type="Sprite2D" parent="knob"]
 texture = ExtResource("4_d21ai")
+
+[node name="ProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("knob")]
+offset_left = 305.0
+offset_top = 110.0
+offset_right = 309.0
+offset_bottom = 137.0
+scale = Vector2(20.46764, 18.507975)
+fill_mode = 3
+show_percentage = false
+script = ExtResource("5_q6r6c")
+knob = NodePath("../knob")
