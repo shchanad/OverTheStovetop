@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3gvkws0jgq5u"
-path="res://.godot/imported/around_knob.png-71463a290a24f0c6d07b7144ff8e7dda.ctex"
+uid="uid://5iu5md2mk6qx"
+path="res://.godot/imported/stovetop.png-088f9acbaad5a8cf41a0fdfb92886abb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/around_knob.png"
-dest_files=["res://.godot/imported/around_knob.png-71463a290a24f0c6d07b7144ff8e7dda.ctex"]
+source_file="res://res/stovetop.png"
+dest_files=["res://.godot/imported/stovetop.png-088f9acbaad5a8cf41a0fdfb92886abb.ctex"]
 
 [params]
 
