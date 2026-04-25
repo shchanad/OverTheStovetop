@@ -19,10 +19,12 @@ var current_line_index: int = 0 # Индекс текущей фразы
 
 # Массив с нашими фразами
 var dialogue_lines: Array[String] = [
-	"Алло? Ты меня слышишь?",
-	"Слушай внимательно, у нас мало времени.",
-	"Возьми ключи на столе и выходи через черный ход.",
-	"Конец связи."
+	"Haló, spáči! Už ses probudil?",
+	"Volám jen pro jistotu: vypnul jsi sporák, když jsi vstal?",
+	"Nechala jsem ti tam ohřívat oběd a hned běžela do práce.",
+	"To jsi hodný! Už jsem si začínala dělat starosti.",
+	"Za chvíli budu doma, končím směnu.",
+	"Tak se běž umýt, až přijdu, budeme večeřet. Pa!"	
 ]
 
 func _ready() -> void:

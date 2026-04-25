@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PuzzleLevel" load_steps=2 format=3 uid="uid://dxfxg4mflibw4"]
 
-[ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/puzzle_level.gd" id="1_6exii"]
+[ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/level_2.gd" id="1_6exii"]
 
 [resource]
 script = ExtResource("1_6exii")

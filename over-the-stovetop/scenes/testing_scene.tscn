@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=25 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
-[ext_resource type="Resource" uid="uid://k6l7t2ekdg3r" path="res://levels/level_01.tres" id="2_ltgxd"]
-[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stovetop.png" id="3_tvk4s"]
+[ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
+[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stove.png" id="3_tvk4s"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="4_65vkx"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_bwcr2"]
@@ -10,13 +10,24 @@
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="8_4kp1c"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
 [ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
+[ext_resource type="Script" uid="uid://5y2jwsbmfkei" path="res://scenes/teapot.gd" id="10_0vd70"]
+[ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://pot.gd" id="10_65vkx"]
+[ext_resource type="Texture2D" uid="uid://c2ml5dan1bf8t" path="res://res/teapot.png" id="11_bwcr2"]
+[ext_resource type="Texture2D" uid="uid://dm0jehisbnj0i" path="res://res/borsch.png" id="11_glees"]
+[ext_resource type="Texture2D" uid="uid://qbiqiojl3l85" path="res://res/pot1.png" id="12_bwcr2"]
+[ext_resource type="Texture2D" uid="uid://cflx05rnwmnt" path="res://res/oval.png" id="12_glees"]
+[ext_resource type="Texture2D" uid="uid://bqjoev1vipq52" path="res://res/pot2.png" id="13_dy6ti"]
+[ext_resource type="Texture2D" uid="uid://cd0a5jhidqthn" path="res://res/milk.jpg" id="15_synk6"]
+[ext_resource type="Script" uid="uid://dkhnsve4yqgs" path="res://scenes/turka.gd" id="16_v7a1m"]
+[ext_resource type="Texture2D" uid="uid://c8ojduqi7fqfe" path="res://res/turka.png" id="17_maxak"]
+[ext_resource type="Texture2D" uid="uid://b3766evq4v0ro" path="res://res/coffee.png" id="18_5unbq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yy31"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlvp0"]
 shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlvp0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gby3"]
 shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
@@ -26,7 +37,7 @@ shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gby3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yy31"]
 shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
@@ -40,37 +51,6 @@ use_clamp_mode = false
 position = Vector2(702.00006, 746.00006)
 scale = Vector2(1.0403458, 1.0403458)
 texture = ExtResource("3_tvk4s")
-
-[node name="1" type="Node2D" parent="."]
-position = Vector2(600, 289)
-scale = Vector2(0.5, 0.5)
-
-[node name="knob" type="Node2D" parent="1"]
-scale = Vector2(0.3, 0.3)
-script = ExtResource("4_65vkx")
-
-[node name="outer" type="Sprite2D" parent="1/knob"]
-material = SubResource("ShaderMaterial_7yy31")
-position = Vector2(-1057.3333, 1069.3334)
-texture = ExtResource("6_bwcr2")
-
-[node name="inner" type="Sprite2D" parent="1/knob"]
-position = Vector2(-1057.3333, 1069.3333)
-texture = ExtResource("7_0vd70")
-
-[node name="ProgressBar" type="ProgressBar" parent="1"]
-offset_left = -466.0
-offset_top = -147.99997
-offset_right = -435.0
-offset_bottom = 165.00003
-fill_mode = 3
-script = ExtResource("8_4kp1c")
-metadata/_edit_use_anchors_ = true
-
-[node name="fireParticles" type="CPUParticles2D" parent="1"]
-position = Vector2(-110, 138)
-scale = Vector2(2, 2)
-script = ExtResource("9_dy6ti")
 
 [node name="2" type="Node2D" parent="."]
 position = Vector2(600, 289)
@@ -103,6 +83,98 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(78, 66)
 scale = Vector2(2, 2)
 script = ExtResource("9_dy6ti")
+
+[node name="teapot" type="Node2D" parent="2"]
+script = ExtResource("10_0vd70")
+
+[node name="Overflow" type="CPUParticles2D" parent="2/teapot"]
+position = Vector2(274, -100)
+amount = 60
+lifetime = 1.29
+explosiveness = 0.1
+direction = Vector2(0, -1)
+spread = 71.35
+gravity = Vector2(0, -100)
+
+[node name="potimg" type="Sprite2D" parent="2/teapot"]
+position = Vector2(114.00003, -110.000015)
+scale = Vector2(0.394962, 0.39496198)
+texture = ExtResource("11_bwcr2")
+
+[node name="bubbles" type="CPUParticles2D" parent="2/teapot"]
+lifetime = 0.31
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, -100)
+
+[node name="4" type="Node2D" parent="."]
+position = Vector2(600, 289)
+scale = Vector2(0.5, 0.5)
+
+[node name="knob" type="Node2D" parent="4"]
+position = Vector2(596, 38)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("4_65vkx")
+
+[node name="outer" type="Sprite2D" parent="4/knob"]
+material = SubResource("ShaderMaterial_7gby3")
+position = Vector2(-1057.333, 1069.3333)
+texture = ExtResource("6_bwcr2")
+
+[node name="inner" type="Sprite2D" parent="4/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("7_0vd70")
+
+[node name="ProgressBar" type="ProgressBar" parent="4"]
+offset_left = 748.0
+offset_top = -236.0
+offset_right = 779.0
+offset_bottom = 77.0
+fill_mode = 3
+script = ExtResource("8_4kp1c")
+metadata/_edit_use_anchors_ = true
+
+[node name="fireParticles" type="CPUParticles2D" parent="4"]
+position = Vector2(496, 86)
+scale = Vector2(2, 2)
+script = ExtResource("9_dy6ti")
+
+[node name="pot" type="Node2D" parent="4"]
+position = Vector2(0, -280)
+script = ExtResource("10_65vkx")
+
+[node name="potimg" type="Sprite2D" parent="4/pot"]
+position = Vector2(505.71436, 247.7143)
+scale = Vector2(0.15792415, 0.15792413)
+texture = ExtResource("13_dy6ti")
+
+[node name="bubbles" type="CPUParticles2D" parent="4/pot"]
+position = Vector2(504, 222)
+lifetime = 0.31
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, -100)
+
+[node name="Overflow" type="CPUParticles2D" parent="4/pot"]
+position = Vector2(512, 214)
+amount = 60
+lifetime = 1.29
+explosiveness = 0.1
+direction = Vector2(0, -1)
+spread = 71.35
+gravity = Vector2(0, 400)
+color = Color(0.9958826, 0.976165, 0.93987495, 1)
+
+[node name="mask" type="Sprite2D" parent="4/pot"]
+clip_children = 1
+position = Vector2(507.71442, 217.71431)
+scale = Vector2(0.36999974, 0.1956168)
+texture = ExtResource("12_glees")
+
+[node name="food" type="Sprite2D" parent="4/pot/mask"]
+position = Vector2(6.1774025, 62.804897)
+scale = Vector2(1.185917, 1.4712703)
+texture = ExtResource("15_synk6")
 
 [node name="3" type="Node2D" parent="."]
 position = Vector2(600, 289)
@@ -139,35 +211,108 @@ position = Vector2(320, 164)
 scale = Vector2(2, 2)
 script = ExtResource("9_dy6ti")
 
-[node name="4" type="Node2D" parent="."]
+[node name="pot" type="Node2D" parent="3"]
+position = Vector2(0, -280)
+script = ExtResource("16_v7a1m")
+
+[node name="potimg" type="Sprite2D" parent="3/pot"]
+position = Vector2(386, 340)
+scale = Vector2(0.15792415, 0.15792413)
+texture = ExtResource("17_maxak")
+
+[node name="bubbles" type="CPUParticles2D" parent="3/pot"]
+position = Vector2(332, 314)
+lifetime = 0.31
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, -100)
+color = Color(0.22230777, 0.13272661, 0.02175753, 1)
+
+[node name="Overflow" type="CPUParticles2D" parent="3/pot"]
+position = Vector2(334, 312)
+amount = 60
+lifetime = 14.44
+explosiveness = 0.1
+randomness = 0.15
+direction = Vector2(0, -1)
+spread = 71.35
+gravity = Vector2(0, 400)
+color = Color(0.55814034, 0.32940304, 0.14140242, 1)
+
+[node name="mask" type="Sprite2D" parent="3/pot"]
+clip_children = 1
+position = Vector2(332.00006, 314)
+scale = Vector2(0.14250003, 0.08137174)
+texture = ExtResource("12_glees")
+
+[node name="food" type="Sprite2D" parent="3/pot/mask"]
+position = Vector2(-0.0002784729, -49.15702)
+scale = Vector2(1.3415487, 1.5765471)
+texture = ExtResource("18_5unbq")
+
+[node name="1" type="Node2D" parent="."]
 position = Vector2(600, 289)
 scale = Vector2(0.5, 0.5)
 
-[node name="knob" type="Node2D" parent="4"]
-position = Vector2(596, 38)
+[node name="pot" type="Node2D" parent="1"]
+script = ExtResource("10_65vkx")
+
+[node name="potimg" type="Sprite2D" parent="1/pot"]
+position = Vector2(-102, -6)
+scale = Vector2(0.15792415, 0.15792413)
+texture = ExtResource("12_bwcr2")
+
+[node name="bubbles" type="CPUParticles2D" parent="1/pot"]
+lifetime = 0.31
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, -100)
+
+[node name="Overflow" type="CPUParticles2D" parent="1/pot"]
+position = Vector2(-104, -106)
+amount = 60
+lifetime = 1.29
+explosiveness = 0.1
+direction = Vector2(0, -1)
+spread = 71.35
+gravity = Vector2(0, 400)
+color = Color(0.6627451, 0.05490196, 0.05490196, 1)
+
+[node name="mask" type="Sprite2D" parent="1/pot"]
+clip_children = 1
+position = Vector2(-98.99998, -100.99999)
+scale = Vector2(0.48249993, 0.2694805)
+texture = ExtResource("12_glees")
+
+[node name="food" type="Sprite2D" parent="1/pot/mask"]
+position = Vector2(2.0725574, 3.7108784)
+scale = Vector2(0.22199747, 0.2754141)
+texture = ExtResource("11_glees")
+
+[node name="knob" type="Node2D" parent="1"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("4_65vkx")
 
-[node name="outer" type="Sprite2D" parent="4/knob"]
-material = SubResource("ShaderMaterial_7gby3")
-position = Vector2(-1057.333, 1069.3333)
+[node name="outer" type="Sprite2D" parent="1/knob"]
+material = SubResource("ShaderMaterial_7yy31")
+position = Vector2(-1057.3333, 1069.3334)
 texture = ExtResource("6_bwcr2")
 
-[node name="inner" type="Sprite2D" parent="4/knob"]
+[node name="inner" type="Sprite2D" parent="1/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("7_0vd70")
 
-[node name="ProgressBar" type="ProgressBar" parent="4"]
-offset_left = 748.0
-offset_top = -236.0
-offset_right = 779.0
-offset_bottom = 77.0
+[node name="ProgressBar" type="ProgressBar" parent="1"]
+offset_left = -466.0
+offset_top = -147.99997
+offset_right = -435.0
+offset_bottom = 165.00003
 fill_mode = 3
 script = ExtResource("8_4kp1c")
 metadata/_edit_use_anchors_ = true
 
-[node name="fireParticles" type="CPUParticles2D" parent="4"]
-position = Vector2(496, 86)
+[node name="fireParticles" type="CPUParticles2D" parent="1"]
+position = Vector2(-110, 138)
 scale = Vector2(2, 2)
 script = ExtResource("9_dy6ti")
 
