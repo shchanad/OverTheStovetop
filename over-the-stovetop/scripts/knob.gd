@@ -8,7 +8,7 @@ class_name Knob
 var HIGHLIGHTING_VALUE = 6 # how much highlighted
 
 # Emitted whenever the state successfully changes, useful for the parent node
-signal state_changed(new_state: int)
+signal state_changed(new_state: int, delta: int)
 
 # ANGLES
 const STATES: Array[float] = [0.0, 36.0, 72.0, 108.0, 144.0, 180.0]
@@ -33,6 +33,7 @@ func _ready() -> void:
 # --- Public Methods (Call these from your parent scene) ---
 func set_state(new_state: int, animate: bool = true) -> void:
 	new_state = new_state % STATES.size()
+	var delta = new_state - current_state
 	
 	if current_state == new_state and (_tween == null or not _tween.is_running()):
 		return # We are already in this state and not moving
@@ -45,9 +46,12 @@ func set_state(new_state: int, animate: bool = true) -> void:
 	else:
 		inner_knob.rotation_degrees = target_degrees
 
-	state_changed.emit(current_state)
+	state_changed.emit(current_state, delta)
 	progress_bar.set_heat_power(current_state)
 	fire.update_fire(current_state)
+
+func get_state() -> int:
+	return current_state
 
 func step_forward() -> void:
 	set_state(clampi(current_state + 1, 0, STATES.size() - 1))
