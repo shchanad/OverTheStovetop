@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var my_knob: Knob = $knob
+@onready var my_knob: Knob = get_node("knob")
 
 func _ready() -> void:
 	# Listen for when the knob changes state
