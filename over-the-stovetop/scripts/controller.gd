@@ -1,12 +1,17 @@
 extends Node2D
 
 @onready var score_manager: ScoreManager = get_node("ScoreManager")
-
+@onready var result_ui = $ResultUI
+@onready var score_label = $ResultUI/ScoreLabel
+@onready var next_button = $ResultUI/NextButton
 @onready var knobs: Array[Knob] = [get_node('1/knob'), get_node('2/knob'), get_node('3/knob'), get_node('4/knob')]
 var selected_knob: int = -1
 
 # Drop your Level resource into this slot in the Inspector!
-@export var current_level: PuzzleLevel
+@export var level_list: Array[PuzzleLevel] = []
+var current_level_index: int = 0
+
+var current_level: PuzzleLevel
 
 # NEW: Toggle this in the inspector to switch between Clamp (true) and Modulo (false)
 @export var use_clamp_mode: bool = false
@@ -17,6 +22,12 @@ var current_variables: Array[int] = [0, 0, 0, 0]
 var player_moves: int;
 
 func _ready() -> void:
+	
+	next_button.pressed.connect(_on_next_button_pressed)
+	
+	if level_list.size() > 0:
+		load_level(0) # Загружаем самый первый уровень из списка
+		
 	player_moves = 0
 	# Load the starting variables from the resource
 	if current_level:
@@ -34,6 +45,8 @@ func _ready() -> void:
 		knobs[i].set_block_signals(false)
 
 func _process(_delta: float) -> void:
+	if result_ui.visible:
+		return
 	# ... (Your exact Input logic for KEY_1 to KEY_4 remains here unchanged!) ...
 	if Input.is_key_pressed(KEY_1):
 		_select_knob(0)
@@ -51,6 +64,27 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_just_pressed("ui_left"):
 			knobs[selected_knob].step_backward(use_clamp_mode)
 			player_moves += 1
+
+func load_level(index: int) -> void:
+	if index >= level_list.size():
+		print("Finish!")
+		return
+	
+	current_level_index = index
+	current_level = level_list[index]
+	player_moves = 0
+	
+	current_variables[0] = current_level.starting_variables.x
+	current_variables[1] = current_level.starting_variables.y
+	current_variables[2] = current_level.starting_variables.z
+	current_variables[3] = current_level.starting_variables.w
+	
+	for i in range(knobs.size()):
+		knobs[i].set_block_signals(true)
+		knobs[i].set_state(current_variables[i], true)
+		knobs[i].set_block_signals(false)
+		
+	print("Level loaded: ", index + 1)
 
 # Helper function to clean up your _process selection code
 func _select_knob(index: int) -> void:
@@ -105,3 +139,26 @@ func _check_win_condition() -> void:
 	
 	print("Level Complete! All variables are 0!")
 	score_manager.calculate_final_score(player_moves, current_level.minimum_steps)
+	
+	selected_knob = -1
+	result_ui.visible = true
+	score_label.text = "Survived!\nMoves number: " + str(player_moves)
+	if current_level_index >= level_list.size() - 1:
+		next_button.text = "Finish Game"
+	else:
+		next_button.text = "Next Level"
+	
+	load_level(current_level_index)
+	
+func _on_next_button_pressed() -> void:
+	# Скрываем меню результатов
+	result_ui.visible = false
+	
+	# Проверяем, есть ли следующий уровень
+	if current_level_index < level_list.size() - 1:
+		current_level_index += 1
+		load_level(current_level_index)
+	else:
+		print("Все уровни пройдены!")
+		# Здесь можно либо закрыть игру, либо вернуть в главное меню
+		# get_tree().change_scene_to_file("res://MainMenu.tscn")

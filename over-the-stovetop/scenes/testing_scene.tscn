@@ -1,25 +1,41 @@
-[gd_scene load_steps=26 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=41 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
+[ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/puzzle_level.gd" id="2_h58fg"]
 [ext_resource type="Resource" uid="uid://k6l7t2ekdg3r" path="res://levels/level_01.tres" id="2_ltgxd"]
+[ext_resource type="Resource" path="res://levels/level_03.tres" id="2_maxak"]
+[ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
+[ext_resource type="Texture2D" uid="uid://b4jr3u8j33sm1" path="res://res/background.jpg" id="3_5unbq"]
 [ext_resource type="Texture2D" uid="uid://chjoga15qlvc2" path="res://res/stovetop.png" id="3_tvk4s"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
+[ext_resource type="Resource" path="res://levels/level_04.tres" id="6_6auyk"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="7_0vd70"]
+[ext_resource type="Resource" path="res://levels/level_05.tres" id="7_tdcn4"]
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="8_4kp1c"]
+[ext_resource type="Resource" path="res://levels/level_06.tres" id="8_25hb4"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
-[ext_resource type="Script" path="res://scenes/teapot.gd" id="10_0vd70"]
+[ext_resource type="Resource" path="res://levels/level_07.tres" id="9_iddgy"]
+[ext_resource type="Script" uid="uid://5y2jwsbmfkei" path="res://scripts/teapot.gd" id="10_0vd70"]
 [ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://pot.gd" id="10_65vkx"]
-[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
+[ext_resource type="Script" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
+[ext_resource type="Resource" path="res://levels/level_08.tres" id="10_uc3ay"]
+[ext_resource type="Resource" path="res://levels/level_09.tres" id="11_bf31k"]
 [ext_resource type="Texture2D" uid="uid://c2ml5dan1bf8t" path="res://res/teapot.png" id="11_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://dm0jehisbnj0i" path="res://res/borsch.png" id="11_glees"]
+[ext_resource type="Resource" path="res://levels/level_10.tres" id="12_8ml0m"]
 [ext_resource type="Texture2D" uid="uid://qbiqiojl3l85" path="res://res/pot1.png" id="12_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://cflx05rnwmnt" path="res://res/oval.png" id="12_glees"]
+[ext_resource type="Resource" uid="uid://cyxm7mpdoiyye" path="res://levels/level_11.tres" id="13_6e6ul"]
 [ext_resource type="Texture2D" uid="uid://bqjoev1vipq52" path="res://res/pot2.png" id="13_dy6ti"]
 [ext_resource type="Texture2D" uid="uid://cd0a5jhidqthn" path="res://res/milk.jpg" id="15_synk6"]
-[ext_resource type="Script" path="res://scenes/turka.gd" id="16_v7a1m"]
+[ext_resource type="Script" uid="uid://dkhnsve4yqgs" path="res://scripts/turka.gd" id="16_v7a1m"]
 [ext_resource type="Texture2D" uid="uid://c8ojduqi7fqfe" path="res://res/turka.png" id="17_maxak"]
 [ext_resource type="Texture2D" uid="uid://b3766evq4v0ro" path="res://res/coffee.png" id="18_5unbq"]
+[ext_resource type="Texture2D" uid="uid://pxb305w8hosm" path="res://res/133794-2.jpg" id="34_6auyk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hs6ho"]
+blend_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_v7a1m"]
 script/source = "extends Node2D
@@ -153,9 +169,25 @@ shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_6auyk"]
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [node name="All" type="Node2D"]
 script = ExtResource("1_ltgxd")
-current_level = ExtResource("2_ltgxd")
+level_list = Array[ExtResource("2_h58fg")]([ExtResource("2_ltgxd"), ExtResource("2_nihl2"), ExtResource("2_maxak"), ExtResource("6_6auyk"), ExtResource("7_tdcn4"), ExtResource("8_25hb4"), ExtResource("9_iddgy"), ExtResource("10_uc3ay"), ExtResource("11_bf31k"), ExtResource("12_8ml0m"), ExtResource("13_6e6ul")])
+
+[node name="Img20260425212219279" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(578.10565, 291.12955)
+scale = Vector2(0.57303864, 0.57303864)
+texture = ExtResource("3_5unbq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.18359044, 0.18359044, 0.18359044, 1)
+self_modulate = Color(0.27387273, 0.27387273, 0.27387273, 1)
+material = SubResource("CanvasItemMaterial_hs6ho")
 
 [node name="Stove" type="Sprite2D" parent="."]
 position = Vector2(702.00006, 746.00006)
@@ -428,3 +460,28 @@ script = ExtResource("9_dy6ti")
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("10_nihl2")
+
+[node name="ResultUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="TextureRect" parent="ResultUI"]
+offset_left = 225.0
+offset_top = 123.0
+offset_right = 941.0
+offset_bottom = 534.0
+texture = ExtResource("34_6auyk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ScoreLabel" type="Label" parent="ResultUI"]
+offset_left = 459.0
+offset_top = 247.0
+offset_right = 706.0
+offset_bottom = 317.0
+label_settings = SubResource("LabelSettings_6auyk")
+
+[node name="NextButton" type="Button" parent="ResultUI"]
+offset_left = 463.0
+offset_top = 391.0
+offset_right = 709.0
+offset_bottom = 462.0
