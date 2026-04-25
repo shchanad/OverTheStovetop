@@ -9,7 +9,7 @@ var selected_knob: int = -1
 @export var current_level: PuzzleLevel
 
 # NEW: Toggle this in the inspector to switch between Clamp (true) and Modulo (false)
-@export var use_clamp_mode: bool = true
+@export var use_clamp_mode: bool = false
 
 # This array holds the live numbers the player is trying to get to 0
 var current_variables: Array[int] = [0, 0, 0, 0]
@@ -33,7 +33,7 @@ func _ready() -> void:
 		knobs[i].set_state(current_variables[i], true)
 		knobs[i].set_block_signals(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# ... (Your exact Input logic for KEY_1 to KEY_4 remains here unchanged!) ...
 	if Input.is_key_pressed(KEY_1):
 		_select_knob(0)

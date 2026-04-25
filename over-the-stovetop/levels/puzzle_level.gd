@@ -1,5 +1,5 @@
 extends Resource
-
+class_name PuzzleLevel
 
 @export var starting_variables: Vector4i = Vector4i(0, 0, 0, 0)
 

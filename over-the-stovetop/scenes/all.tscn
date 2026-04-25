@@ -1,20 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://b47wl6nj3i8ji"]
+[gd_scene load_steps=15 format=3 uid="uid://b47wl6nj3i8ji"]
 
-[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stovetop.png" id="1_nylx1"]
-[ext_resource type="Script" uid="uid://c4ydemvbgiid0" path="res://scripts/1.gd" id="2_jeqjn"]
+[ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_jeqjn"]
+[ext_resource type="Texture2D" uid="uid://chjoga15qlvc2" path="res://res/stovetop.png" id="1_nylx1"]
+[ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_brlfm"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="3_brlfm"]
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="4_g5fjy"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_k6oxs"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_mw6e2"]
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="7_e3abr"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="8_mxjxk"]
+[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_brlfm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0gfr"]
 shader = ExtResource("5_k6oxs")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jeqjn"]
+shader = ExtResource("5_k6oxs")
+shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brlfm"]
+shader = ExtResource("5_k6oxs")
+shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5fjy"]
+shader = ExtResource("5_k6oxs")
+shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
+shader_parameter/line_thickness = 0.0
+
 [node name="All" type="Node2D"]
+script = ExtResource("1_jeqjn")
+current_level = ExtResource("2_brlfm")
 
 [node name="Stove" type="Sprite2D" parent="."]
 position = Vector2(702.00006, 746.00006)
@@ -24,20 +43,19 @@ texture = ExtResource("1_nylx1")
 [node name="1" type="Node2D" parent="."]
 position = Vector2(600, 289)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("2_jeqjn")
 
 [node name="knob" type="Node2D" parent="1"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("3_brlfm")
 
+[node name="outer" type="Sprite2D" parent="1/knob"]
+material = SubResource("ShaderMaterial_e0gfr")
+position = Vector2(-1057.3333, 1069.3334)
+texture = ExtResource("6_mw6e2")
+
 [node name="inner" type="Sprite2D" parent="1/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("4_g5fjy")
-
-[node name="outer" type="Sprite2D" parent="1/knob"]
-material = SubResource("ShaderMaterial_e0gfr")
-position = Vector2(-1057.3333, 1069.3333)
-texture = ExtResource("6_mw6e2")
 
 [node name="ProgressBar" type="ProgressBar" parent="1"]
 offset_left = -466.0
@@ -56,20 +74,20 @@ script = ExtResource("8_mxjxk")
 [node name="2" type="Node2D" parent="."]
 position = Vector2(600, 289)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("2_jeqjn")
 
 [node name="knob" type="Node2D" parent="2"]
 position = Vector2(192, 16)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("3_brlfm")
 
+[node name="outer" type="Sprite2D" parent="2/knob"]
+material = SubResource("ShaderMaterial_jeqjn")
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("6_mw6e2")
+
 [node name="inner" type="Sprite2D" parent="2/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("4_g5fjy")
-
-[node name="outer" type="Sprite2D" parent="2/knob"]
-position = Vector2(-1057.3333, 1069.3333)
-texture = ExtResource("6_mw6e2")
 
 [node name="ProgressBar" type="ProgressBar" parent="2"]
 offset_left = -84.0
@@ -88,7 +106,6 @@ script = ExtResource("8_mxjxk")
 [node name="3" type="Node2D" parent="."]
 position = Vector2(600, 289)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("2_jeqjn")
 
 [node name="knob" type="Node2D" parent="3"]
 unique_name_in_owner = true
@@ -96,13 +113,14 @@ position = Vector2(390, 28)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("3_brlfm")
 
+[node name="outer" type="Sprite2D" parent="3/knob"]
+material = SubResource("ShaderMaterial_brlfm")
+position = Vector2(-1057.3335, 1069.3333)
+texture = ExtResource("6_mw6e2")
+
 [node name="inner" type="Sprite2D" parent="3/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("4_g5fjy")
-
-[node name="outer" type="Sprite2D" parent="3/knob"]
-position = Vector2(-1057.3333, 1069.3333)
-texture = ExtResource("6_mw6e2")
 
 [node name="ProgressBar" type="ProgressBar" parent="3"]
 unique_name_in_owner = true
@@ -123,20 +141,20 @@ script = ExtResource("8_mxjxk")
 [node name="4" type="Node2D" parent="."]
 position = Vector2(600, 289)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("2_jeqjn")
 
 [node name="knob" type="Node2D" parent="4"]
 position = Vector2(596, 38)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("3_brlfm")
 
+[node name="outer" type="Sprite2D" parent="4/knob"]
+material = SubResource("ShaderMaterial_g5fjy")
+position = Vector2(-1057.333, 1069.3333)
+texture = ExtResource("6_mw6e2")
+
 [node name="inner" type="Sprite2D" parent="4/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("4_g5fjy")
-
-[node name="outer" type="Sprite2D" parent="4/knob"]
-position = Vector2(-1057.3333, 1069.3333)
-texture = ExtResource("6_mw6e2")
 
 [node name="ProgressBar" type="ProgressBar" parent="4"]
 offset_left = 748.0
@@ -151,3 +169,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(496, 86)
 scale = Vector2(2, 2)
 script = ExtResource("8_mxjxk")
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("10_brlfm")
