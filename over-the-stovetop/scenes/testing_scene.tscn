@@ -1,24 +1,24 @@
-[gd_scene load_steps=25 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=26 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
-[ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
-[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stove.png" id="3_tvk4s"]
+[ext_resource type="Resource" uid="uid://k6l7t2ekdg3r" path="res://levels/level_01.tres" id="2_ltgxd"]
+[ext_resource type="Texture2D" uid="uid://chjoga15qlvc2" path="res://res/stovetop.png" id="3_tvk4s"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="4_65vkx"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="7_0vd70"]
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="8_4kp1c"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
-[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
-[ext_resource type="Script" uid="uid://5y2jwsbmfkei" path="res://scenes/teapot.gd" id="10_0vd70"]
+[ext_resource type="Script" path="res://scenes/teapot.gd" id="10_0vd70"]
 [ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://pot.gd" id="10_65vkx"]
+[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
 [ext_resource type="Texture2D" uid="uid://c2ml5dan1bf8t" path="res://res/teapot.png" id="11_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://dm0jehisbnj0i" path="res://res/borsch.png" id="11_glees"]
 [ext_resource type="Texture2D" uid="uid://qbiqiojl3l85" path="res://res/pot1.png" id="12_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://cflx05rnwmnt" path="res://res/oval.png" id="12_glees"]
 [ext_resource type="Texture2D" uid="uid://bqjoev1vipq52" path="res://res/pot2.png" id="13_dy6ti"]
 [ext_resource type="Texture2D" uid="uid://cd0a5jhidqthn" path="res://res/milk.jpg" id="15_synk6"]
-[ext_resource type="Script" uid="uid://dkhnsve4yqgs" path="res://scenes/turka.gd" id="16_v7a1m"]
+[ext_resource type="Script" path="res://scenes/turka.gd" id="16_v7a1m"]
 [ext_resource type="Texture2D" uid="uid://c8ojduqi7fqfe" path="res://res/turka.png" id="17_maxak"]
 [ext_resource type="Texture2D" uid="uid://b3766evq4v0ro" path="res://res/coffee.png" id="18_5unbq"]
 
@@ -45,7 +45,6 @@ shader_parameter/line_thickness = 0.0
 [node name="All" type="Node2D"]
 script = ExtResource("1_ltgxd")
 current_level = ExtResource("2_ltgxd")
-use_clamp_mode = false
 
 [node name="Stove" type="Sprite2D" parent="."]
 position = Vector2(702.00006, 746.00006)
