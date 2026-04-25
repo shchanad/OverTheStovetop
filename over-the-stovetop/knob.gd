@@ -2,6 +2,8 @@ extends Node2D
 class_name Knob
 
 @onready var inner_knob: Sprite2D = $inner
+@onready var progress_bar = get_node("../ProgressBar")
+@onready var fire = get_node("../fireParticles")
 #@onready var outer_knob: Sprite2D = $outer
 
 # Emitted whenever the state successfully changes, useful for the parent node
@@ -43,6 +45,8 @@ func set_state(new_state: int, animate: bool = true) -> void:
 		inner_knob.rotation_degrees = target_degrees
 
 	state_changed.emit(current_state)
+	progress_bar.set_heat_power(current_state)
+	fire.update_fire(current_state)
 
 func step_forward() -> void:
 	set_state((current_state + 1) % STATES.size())

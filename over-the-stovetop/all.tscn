@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=3 uid="uid://b47wl6nj3i8ji"]
+
+[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stove.png" id="1_iipuh"]
+[ext_resource type="Script" uid="uid://c4ydemvbgiid0" path="res://1.gd" id="2_ooill"]
+[ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://knob.gd" id="2_roe0g"]
+[ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="3_ooill"]
+[ext_resource type="Texture2D" uid="uid://obbaar1c8knt" path="res://res/around_knob.png" id="4_e0gfr"]
+[ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://progress_bar.gd" id="5_urwuy"]
+[ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://fire_particles.gd" id="6_qcsyi"]
+
+[node name="All" type="Node2D"]
+
+[node name="Stove" type="Sprite2D" parent="."]
+position = Vector2(702.00006, 746.00006)
+scale = Vector2(1.0403458, 1.0403458)
+texture = ExtResource("1_iipuh")
+
+[node name="1" type="Node2D" parent="."]
+position = Vector2(600, 289)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ooill")
+
+[node name="knob" type="Node2D" parent="1"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_roe0g")
+
+[node name="inner" type="Sprite2D" parent="1/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("3_ooill")
+
+[node name="outer" type="Sprite2D" parent="1/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("4_e0gfr")
+
+[node name="ProgressBar" type="ProgressBar" parent="1"]
+offset_left = -466.0
+offset_top = -147.99997
+offset_right = -435.0
+offset_bottom = 165.00003
+fill_mode = 3
+script = ExtResource("5_urwuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="fireParticles" type="CPUParticles2D" parent="1"]
+position = Vector2(-110, 138)
+scale = Vector2(2, 2)
+script = ExtResource("6_qcsyi")
+
+[node name="2" type="Node2D" parent="."]
+position = Vector2(600, 289)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ooill")
+
+[node name="knob" type="Node2D" parent="2"]
+position = Vector2(192, 16)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_roe0g")
+
+[node name="inner" type="Sprite2D" parent="2/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("3_ooill")
+
+[node name="outer" type="Sprite2D" parent="2/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("4_e0gfr")
+
+[node name="ProgressBar" type="ProgressBar" parent="2"]
+offset_left = -84.0
+offset_top = -304.0
+offset_right = -53.0
+offset_bottom = 9.0
+fill_mode = 3
+script = ExtResource("5_urwuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="fireParticles" type="CPUParticles2D" parent="2"]
+position = Vector2(78, 66)
+scale = Vector2(2, 2)
+script = ExtResource("6_qcsyi")
+
+[node name="3" type="Node2D" parent="."]
+position = Vector2(600, 289)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ooill")
+
+[node name="knob" type="Node2D" parent="3"]
+unique_name_in_owner = true
+position = Vector2(390, 28)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_roe0g")
+
+[node name="inner" type="Sprite2D" parent="3/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("3_ooill")
+
+[node name="outer" type="Sprite2D" parent="3/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("4_e0gfr")
+
+[node name="ProgressBar" type="ProgressBar" parent="3"]
+unique_name_in_owner = true
+offset_left = 494.0
+offset_top = -86.0
+offset_right = 525.0
+offset_bottom = 227.0
+fill_mode = 3
+script = ExtResource("5_urwuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="fireParticles" type="CPUParticles2D" parent="3"]
+unique_name_in_owner = true
+position = Vector2(320, 164)
+scale = Vector2(2, 2)
+script = ExtResource("6_qcsyi")
+
+[node name="4" type="Node2D" parent="."]
+position = Vector2(600, 289)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ooill")
+
+[node name="knob" type="Node2D" parent="4"]
+position = Vector2(596, 38)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_roe0g")
+
+[node name="inner" type="Sprite2D" parent="4/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("3_ooill")
+
+[node name="outer" type="Sprite2D" parent="4/knob"]
+position = Vector2(-1057.3333, 1069.3333)
+texture = ExtResource("4_e0gfr")
+
+[node name="ProgressBar" type="ProgressBar" parent="4"]
+offset_left = 748.0
+offset_top = -236.0
+offset_right = 779.0
+offset_bottom = 77.0
+fill_mode = 3
+script = ExtResource("5_urwuy")
+metadata/_edit_use_anchors_ = true
+
+[node name="fireParticles" type="CPUParticles2D" parent="4"]
+position = Vector2(496, 86)
+scale = Vector2(2, 2)
+script = ExtResource("6_qcsyi")
