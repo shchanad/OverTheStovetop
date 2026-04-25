@@ -1,35 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://0ibooec5tjer"]
+[gd_scene load_steps=8 format=3 uid="uid://0ibooec5tjer"]
 
-[ext_resource type="Texture2D" uid="uid://tbng0hbhdku3" path="res://res/room_with_computer.png" id="1_rq48i"]
-[ext_resource type="Script" uid="uid://c4ew5ecji7u67" path="res://phone.gd" id="2_1ljrl"]
-[ext_resource type="Texture2D" uid="uid://luedytn1w1by" path="res://res/phone.png" id="2_yagjw"]
-[ext_resource type="Texture2D" uid="uid://dll5li8wpaswb" path="res://res/phonecalling.png" id="4_3xrhe"]
-[ext_resource type="AudioStream" uid="uid://dkf0k5adto4el" path="res://res/nokia-3310.mp3" id="5_qlfe6"]
+[ext_resource type="Texture2D" uid="uid://tbng0hbhdku3" path="res://res/room_with_computer.png" id="1_fy3ou"]
+[ext_resource type="Texture2D" uid="uid://luedytn1w1by" path="res://res/phone.png" id="2_fs635"]
+[ext_resource type="Script" uid="uid://c4ew5ecji7u67" path="res://phone.gd" id="3_0fxb6"]
+[ext_resource type="Texture2D" uid="uid://dll5li8wpaswb" path="res://res/phonecalling.png" id="4_3887w"]
+[ext_resource type="AudioStream" uid="uid://dkf0k5adto4el" path="res://res/nokia-3310.mp3" id="5_4ol86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xrhe"]
 size = Vector2(1273.8749, 2123.1262)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fy3ou"]
+font_size = 32
 
 [node name="StartScene" type="Node2D"]
 
 [node name="RoomWithComputer" type="Sprite2D" parent="."]
 position = Vector2(580.38544, 321.75003)
 scale = Vector2(0.42350256, 0.4235026)
-texture = ExtResource("1_rq48i")
+texture = ExtResource("1_fy3ou")
 
 [node name="phone" type="Sprite2D" parent="."]
 position = Vector2(385, 363)
 scale = Vector2(0.023550157, 0.023550166)
-texture = ExtResource("2_yagjw")
-script = ExtResource("2_1ljrl")
-normal_texture = ExtResource("2_yagjw")
-ringing_texture = ExtResource("4_3xrhe")
+texture = ExtResource("2_fs635")
+script = ExtResource("3_0fxb6")
+normal_texture = ExtResource("2_fs635")
+ringing_texture = ExtResource("4_3887w")
 
 [node name="Timer" type="Timer" parent="phone"]
 
 [node name="RingSound" type="AudioStreamPlayer2D" parent="phone"]
 position = Vector2(-16348.087, -15413.903)
 scale = Vector2(42.462563, 42.462543)
-stream = ExtResource("5_qlfe6")
+stream = ExtResource("5_4ol86")
 
 [node name="Area2D" type="Area2D" parent="phone"]
 
@@ -52,11 +55,13 @@ offset_left = 19.0
 offset_top = 13.0
 offset_right = 505.0
 offset_bottom = 199.0
+label_settings = SubResource("LabelSettings_fy3ou")
+autowrap_mode = 3
 
 [node name="BigPhone" type="TextureRect" parent="phone/DialogueUI"]
 offset_left = 55.0
 offset_top = 190.0
 offset_right = 465.0
 offset_bottom = 809.928
-texture = ExtResource("4_3xrhe")
+texture = ExtResource("4_3887w")
 expand_mode = 1

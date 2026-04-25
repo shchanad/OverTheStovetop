@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
 [ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
-[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stovetop.png" id="3_tvk4s"]
+[ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stove.png" id="3_tvk4s"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="4_65vkx"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_bwcr2"]
