@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=15 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
-[ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
+[ext_resource type="Resource" uid="uid://k6l7t2ekdg3r" path="res://levels/level_01.tres" id="2_ltgxd"]
 [ext_resource type="Texture2D" uid="uid://5iu5md2mk6qx" path="res://res/stovetop.png" id="3_tvk4s"]
 [ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="4_65vkx"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="7_0vd70"]
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="8_4kp1c"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
+[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7yy31"]
 shader = ExtResource("5_glees")
@@ -32,7 +33,8 @@ shader_parameter/line_thickness = 0.0
 
 [node name="All" type="Node2D"]
 script = ExtResource("1_ltgxd")
-current_level = ExtResource("2_nihl2")
+current_level = ExtResource("2_ltgxd")
+use_clamp_mode = false
 
 [node name="Stove" type="Sprite2D" parent="."]
 position = Vector2(702.00006, 746.00006)
@@ -168,3 +170,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(496, 86)
 scale = Vector2(2, 2)
 script = ExtResource("9_dy6ti")
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("10_nihl2")

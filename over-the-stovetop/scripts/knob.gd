@@ -11,7 +11,7 @@ var HIGHLIGHTING_VALUE = 6 # how much highlighted
 signal state_changed(new_state: int, delta: int)
 
 # ANGLES
-const STATES: Array[float] = [0.0, 36.0, 72.0, 108.0, 144.0, 180.0]
+const STATES: Array[float] = [0.0, 46.0, 118.0, 180.0, 242.0, 314.0]
 
 # Exposed to the inspector so you can set the starting state
 @export_range(0, 5) var current_state: int = 0
@@ -53,11 +53,17 @@ func set_state(new_state: int, animate: bool = true) -> void:
 func get_state() -> int:
 	return current_state
 
-func step_forward() -> void:
-	set_state(clampi(current_state + 1, 0, STATES.size() - 1))
+func step_forward(clamp_mode: bool) -> void:
+	if clamp_mode:
+		set_state(clampi(current_state + 1, 0, STATES.size() - 1))
+	else:
+		set_state((current_state + 1) % STATES.size())
 
-func step_backward() -> void:
-	set_state(clampi(current_state - 1, 0, STATES.size() - 1))
+func step_backward(clamp_mode: bool) -> void:
+	if clamp_mode:
+		set_state(clampi(current_state - 1, 0, STATES.size() - 1))
+	else:
+		set_state((current_state + STATES.size() - 1) % STATES.size())
 
 # Call this to turn the highlight on
 func enable_highlight() -> void:
@@ -78,15 +84,24 @@ func _animate_rotation(target_degrees: float) -> void:
 		
 	_tween = create_tween()
 	
+	var start_degrees = inner_knob.rotation_degrees
+	
+	# FIND THE SHORTEST PATH:
+	# 1. Find the raw difference between where we want to go and where we are.
+	# 2. Wrap that difference strictly between -180 and 180 degrees.
+	var shortest_diff = wrapf(target_degrees - start_degrees, -180.0, 180.0)
+	 
+	# 3. Add that shortest difference to our current rotation to get our true target.
+	var actual_target_degrees = start_degrees + shortest_diff
+
 	if custom_curve != null:
-		# If you drew a custom curve in the inspector, we use a custom tween method
-		var start_degrees = inner_knob.rotation_degrees
-		_tween.tween_method(_apply_custom_curve.bind(start_degrees, target_degrees), 0.0, 1.0, anim_duration)
+		# Use actual_target_degrees instead of trying to add 360 manually
+		_tween.tween_method(_apply_custom_curve.bind(start_degrees, actual_target_degrees), 0.0, 1.0, anim_duration)
 	else:
-		# Otherwise, use Godot's built-in smooth tweening
+		# Godot's built-in smooth tweening now also uses the shortest path!
 		_tween.set_trans(fallback_transition)
 		_tween.set_ease(Tween.EASE_IN_OUT)
-		_tween.tween_property(inner_knob, "rotation_degrees", target_degrees, anim_duration)
+		_tween.tween_property(inner_knob, "rotation_degrees", actual_target_degrees, anim_duration)
 
 # Evaluates the custom curve from 0.0 to 1.0 to lerp between angles
 func _apply_custom_curve(t: float, start_val: float, end_val: float) -> void:

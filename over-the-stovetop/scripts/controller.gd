@@ -1,15 +1,23 @@
 extends Node2D
 
+@onready var score_manager: ScoreManager = get_node("ScoreManager")
+
 @onready var knobs: Array[Knob] = [get_node('1/knob'), get_node('2/knob'), get_node('3/knob'), get_node('4/knob')]
 var selected_knob: int = -1
 
 # Drop your Level resource into this slot in the Inspector!
 @export var current_level: PuzzleLevel
 
+# NEW: Toggle this in the inspector to switch between Clamp (true) and Modulo (false)
+@export var use_clamp_mode: bool = true
+
 # This array holds the live numbers the player is trying to get to 0
 var current_variables: Array[int] = [0, 0, 0, 0]
 
+var player_moves: int;
+
 func _ready() -> void:
+	player_moves = 0
 	# Load the starting variables from the resource
 	if current_level:
 		current_variables[0] = current_level.starting_variables.x
@@ -38,9 +46,11 @@ func _process(delta: float) -> void:
 
 	if selected_knob >= 0 and selected_knob <= 3:
 		if Input.is_action_just_pressed("ui_right"):
-			knobs[selected_knob].step_forward()
+			knobs[selected_knob].step_forward(use_clamp_mode)
+			player_moves += 1
 		elif Input.is_action_just_pressed("ui_left"):
-			knobs[selected_knob].step_backward()
+			knobs[selected_knob].step_backward(use_clamp_mode)
+			player_moves += 1
 
 # Helper function to clean up your _process selection code
 func _select_knob(index: int) -> void:
@@ -61,8 +71,16 @@ func _on_any_knob_turned(new_state: int, delta: int, knob_index: int) -> void:
 	var rule_array: Array[int] = [rule.x, rule.y, rule.z, rule.w]
 	
 	for i in range(4):
-		current_variables[i] += delta * rule_array[i]
-		current_variables[i] = clampi(current_variables[i], 0, 5)
+		var change = delta * rule_array[i]
+		
+		if use_clamp_mode:
+			# Hard limits: gets stuck at 0 or 5
+			current_variables[i] = clampi(current_variables[i] + change, 0, 5)
+		else:
+			# Wrap-around: loops seamlessly between 0 and 5
+			current_variables[i] += change
+			# The +6 ensures negative numbers wrap backwards correctly in Godot
+			current_variables[i] = (current_variables[i] % 6 + 6) % 6 
 		
 	# 2. Update the visual knobs WITHOUT triggering infinite loops
 	for i in range(4):
@@ -86,3 +104,4 @@ func _check_win_condition() -> void:
 			return 
 	
 	print("Level Complete! All variables are 0!")
+	score_manager.calculate_final_score(player_moves, current_level.minimum_steps)

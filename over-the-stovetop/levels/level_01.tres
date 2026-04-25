@@ -4,3 +4,5 @@
 
 [resource]
 script = ExtResource("1_xsp1e")
+starting_variables = Vector4i(4, 3, 2, 1)
+minimum_steps = 8

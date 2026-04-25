@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PuzzleLevel" load_steps=2 format=3 uid="uid://du0ci0pvcm32j"]
+
+[ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/puzzle_level.gd" id="1_siyii"]
+
+[resource]
+script = ExtResource("1_siyii")
+starting_variables = Vector4i(2, 4, 2, 4)
+knob_rules = Array[Vector4i]([Vector4i(2, 0, 2, 0), Vector4i(0, 2, 0, 2), Vector4i(1, 1, 1, 1), Vector4i(5, 5, 5, 5)])
+minimum_steps = 3
+metadata/_custom_type_script = "uid://62dnkt5ska83"

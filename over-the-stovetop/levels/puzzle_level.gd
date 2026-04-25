@@ -9,3 +9,5 @@ class_name PuzzleLevel
 	Vector4i( 0,  0,  1,  0), 
 	Vector4i( 0,  0,  0,  1)  
 ]
+
+@export var minimum_steps: int

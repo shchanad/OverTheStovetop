@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_r0qmw")
+starting_variables = Vector4i(5, 3, 2, 4)
+knob_rules = Array[Vector4i]([Vector4i(1, 1, 0, 0), Vector4i(0, 1, 1, 0), Vector4i(0, 0, 1, 1), Vector4i(1, 0, 0, 1)])
+minimum_steps = 5
 metadata/_custom_type_script = "uid://62dnkt5ska83"
