@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PuzzleLevel" load_steps=2 format=3 uid="uid://cpj0ahh72lhkt"]
+
+[ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/puzzle_level.gd" id="1_r0qmw"]
+
+[resource]
+script = ExtResource("1_r0qmw")
+metadata/_custom_type_script = "uid://62dnkt5ska83"

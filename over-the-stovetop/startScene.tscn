@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://0ibooec5tjer"]
 
 [ext_resource type="Texture2D" uid="uid://tbng0hbhdku3" path="res://res/room_with_computer.png" id="1_rq48i"]
-[ext_resource type="Script" uid="uid://c4ew5ecji7u67" path="res://phone.gd" id="2_1ljrl"]
+[ext_resource type="Script" path="res://phone.gd" id="2_1ljrl"]
 [ext_resource type="Texture2D" uid="uid://luedytn1w1by" path="res://res/phone.png" id="2_yagjw"]
 [ext_resource type="Texture2D" uid="uid://dll5li8wpaswb" path="res://res/phonecalling.png" id="4_3xrhe"]
 [ext_resource type="AudioStream" uid="uid://dkf0k5adto4el" path="res://res/nokia-3310.mp3" id="5_qlfe6"]
