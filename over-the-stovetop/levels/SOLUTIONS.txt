@@ -1,32 +1,32 @@
 Level 01: 8 Steps
-    Shortest Path: Knob 1 (+2), Knob 2 (+3), Knob 3 (-2), Knob 4 (-1).
+	Shortest Path: Knob 1 (+2), Knob 2 (+3), Knob 3 (-2), Knob 4 (-1).
 
 Level 02: 4 Steps
-    Shortest Path: Knob 2 (-2), Knob 3 (-2).
+	Shortest Path: Knob 2 (-2), Knob 3 (-2).
 
 Level 03: 5 Steps
-    Shortest Path: Knob 1 (-1), Knob 3 (+2), Knob 4 (+2).
+	Shortest Path: Knob 1 (-1), Knob 3 (+2), Knob 4 (+2).
 
 Level 04: 4 Steps
-    Shortest Path: Knob 1 (0), Knob 2 (+1), Knob 3 (-1), Knob 4 (+2).
+	Shortest Path: Knob 1 (0), Knob 2 (+1), Knob 3 (-1), Knob 4 (+2).
 
 Level 05: 3 Steps
-    Shortest Path: Knob 1 (-1), Knob 3 (+2).
+	Shortest Path: Knob 1 (-1), Knob 3 (+2).
 
 Level 06: 3 Steps
-    Shortest Path: Knob 1 (+1), Knob 2 (+1), Knob 4 (-1).
+	Shortest Path: Knob 1 (+1), Knob 2 (+1), Knob 4 (-1).
 
 Level 07: 3 Steps
-    Shortest Path: Knob 1 (+1), Knob 3 (+1), Knob 4 (-1).
+	Shortest Path: Knob 1 (+1), Knob 3 (+1), Knob 4 (-1).
 
 Level 08: 5 Steps
-    Shortest Path: Knob 1 (-1), Knob 2 (-2), Knob 3 (-2).
+	Shortest Path: Knob 1 (-1), Knob 2 (-2), Knob 3 (-2).
 
 Level 09: 4 Steps
-    Shortest Path: Knob 1 (-1), Knob 2 (+1), Knob 3 (0), Knob 4 (+2).
+	Shortest Path: Knob 1 (-1), Knob 2 (+1), Knob 3 (0), Knob 4 (+2).
 
 Level 10: 4 Steps
-    Shortest Path: Knob 1 (+1), Knob 2 (+1), Knob 3 (-1), Knob 4 (-1).
+	Shortest Path: Knob 1 (+1), Knob 2 (+1), Knob 3 (-1), Knob 4 (-1).
 
 Level 11: 7 Steps
-    Shortest Path: Knob 1 (+2), Knob 2 (+1), Knob 3 (+3), Knob 4 (+1).
+	Shortest Path: Knob 1 (+2), Knob 2 (+1), Knob 3 (+3), Knob 4 (+1).
