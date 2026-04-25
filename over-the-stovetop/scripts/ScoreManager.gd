@@ -31,6 +31,9 @@ func _process(delta: float) -> void:
 		if current_score < 0:
 			current_score = 0
 
+# func recalculate_score(time: float):
+	# current_score -= 1.0 + (penalty_growth_factor * time)
+
 # Call this function when the player successfully solves the puzzle
 func calculate_final_score(player_moves: int, optimal_moves: int) -> int:
 	# Stop the clock!

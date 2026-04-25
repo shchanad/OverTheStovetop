@@ -7,6 +7,8 @@ var boil_speed: float = 40.0
 var heat_power: float = 0.0 
 
 @onready var original_pos = position
+signal overflow_detected(time: float)
+var overflow_time: float = 0.0
 
 func _ready():
 	# Создаем стиль для фона (рамка и подложка)
@@ -62,7 +64,11 @@ func _process(delta):
 
 	if value >= max_level:
 		# Можно добавить сброс или паузу, чтобы не спамило
-		print("БАБАХ!")
+		overflow_time += delta
+		overflow_detected.emit(overflow_time)
+		# print("БАБАХ!")
+	else:
+		overflow_time = 0.0
 
 func set_heat_power(new_value: float) -> void:
 	var clamped_new = clampf(new_value/5, 0.0, 1.0)
