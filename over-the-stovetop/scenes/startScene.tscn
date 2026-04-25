@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://0ibooec5tjer"]
+[gd_scene load_steps=9 format=3 uid="uid://0ibooec5tjer"]
 
 [ext_resource type="Texture2D" uid="uid://tbng0hbhdku3" path="res://res/room_with_computer.png" id="1_fy3ou"]
+[ext_resource type="AudioStream" uid="uid://dda013kaqcbyl" path="res://res/background.mp3" id="2_0fxb6"]
 [ext_resource type="Texture2D" uid="uid://luedytn1w1by" path="res://res/phone.png" id="2_fs635"]
 [ext_resource type="Script" uid="uid://c4ew5ecji7u67" path="res://phone.gd" id="3_0fxb6"]
 [ext_resource type="Texture2D" uid="uid://dll5li8wpaswb" path="res://res/phonecalling.png" id="4_3887w"]
@@ -18,6 +19,12 @@ font_size = 32
 position = Vector2(580.38544, 321.75003)
 scale = Vector2(0.42350256, 0.4235026)
 texture = ExtResource("1_fy3ou")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0fxb6")
+volume_db = -22.698
+pitch_scale = 1.27
+autoplay = true
 
 [node name="phone" type="Sprite2D" parent="."]
 position = Vector2(385, 363)
