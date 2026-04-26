@@ -37,6 +37,10 @@ var current_variables: Array[int] = [0, 0, 0, 0]
 # Used for score change calculation
 var bar_overflow_time: Array[float] = [0.0, 0.0, 0.0, 0.0]
 
+
+# Get a reference to your audio node
+@onready var background_sound: AudioStreamPlayer2D = $BackgroundSound
+
 func _ready() -> void:
 	next_button.pressed.connect(_on_next_button_pressed)
 
@@ -111,6 +115,7 @@ func load_level(index: int) -> void:
 		bars[i].reset()
 		
 	print("Level loaded: ", index + 1)
+	_update_background_audio()
 
 # Helper function to clean up your _process selection code
 func _select_knob(index: int) -> void:
@@ -158,6 +163,7 @@ func _on_any_knob_turned(new_state: int, delta: int, knob_index: int) -> void:
 		# Turn signals back on so the player can interact with it later
 		knobs[i].set_block_signals(false)
 
+	_update_background_audio()
 	print("Current Puzzle State: ", current_variables)
 	_check_win_condition()
 
@@ -254,3 +260,16 @@ func _on_resume_pressed() -> void:
 func _on_restart_pressed() -> void:
 	_toggle_pause()
 	load_level(current_level_index)
+
+# Audio
+func _update_background_audio() -> void:
+	# 1. Find the highest number currently in the array (0 to 5)
+	# Godot 4 has a built-in .max() function for arrays!
+	var highest_value: int = current_variables.max()
+	
+	# 2. Convert that to a percentage from 0.0 to 1.0
+	# (We divide by 5.0 as a float, so it doesn't do integer rounding)
+	var volume_percent: float = highest_value / 5.0
+	
+	# 3. Convert the percentage to Decibels and apply it
+	background_sound.volume_db = linear_to_db(volume_percent)

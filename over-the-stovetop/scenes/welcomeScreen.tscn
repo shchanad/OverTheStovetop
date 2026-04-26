@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://box8rq56tklha"]
+
+[ext_resource type="FontFile" uid="uid://dnn7innfr15hi" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="1_3odj5"]
+[ext_resource type="Script" uid="uid://d2oue5hbumnlv" path="res://scenes/welcome_screen.gd" id="1_jdgxb"]
+[ext_resource type="PackedScene" uid="uid://0ibooec5tjer" path="res://scenes/startScene.tscn" id="2_6acdu"]
+[ext_resource type="AudioStream" uid="uid://bd2j6skk7dno5" path="res://sounds/lofi.mp3" id="4_fg03d"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jdgxb")
+main_game_scene = ExtResource("2_6acdu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterAligner" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuLayout" type="VBoxContainer" parent="CenterAligner"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="CenterAligner/MenuLayout"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3odj5")
+theme_override_font_sizes/font_size = 64
+text = "OVER THE STOVETOP"
+
+[node name="Spacer" type="MarginContainer" parent="CenterAligner/MenuLayout"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 40
+
+[node name="StartButton" type="Button" parent="CenterAligner/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_3odj5")
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CenterAligner/MenuLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_3odj5")
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_fg03d")
+autoplay = true
