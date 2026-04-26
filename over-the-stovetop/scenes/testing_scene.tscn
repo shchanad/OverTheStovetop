@@ -24,13 +24,8 @@
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
 [ext_resource type="Resource" uid="uid://du0ci0pvcm32j" path="res://levels/level_07.tres" id="9_iddgy"]
 [ext_resource type="Texture2D" uid="uid://x5cvijxxvt58" path="res://res/cat_meh1.png" id="9_q5ba2"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://scripts/teapot.gd" id="10_0vd70"]
-[ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://pot.gd" id="10_65vkx"]
-=======
 [ext_resource type="Script" uid="uid://5y2jwsbmfkei" path="res://scripts/teapot.gd" id="10_0vd70"]
 [ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://scripts/pot.gd" id="10_65vkx"]
->>>>>>> dee9fa02322faa8161fe02a01136df45317ef59d
 [ext_resource type="Texture2D" uid="uid://cvhk1ll8po8y4" path="res://res/cat_bad1.png" id="10_n4wei"]
 [ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
 [ext_resource type="Resource" uid="uid://dxnsti008au5a" path="res://levels/level_08.tres" id="10_uc3ay"]
