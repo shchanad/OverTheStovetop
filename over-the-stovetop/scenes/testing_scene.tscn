@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=65 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
 [ext_resource type="Texture2D" uid="uid://ccbclc5j238kq" path="res://res/cat_nice1.png" id="2_73axr"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://dfjyjthfdryv8" path="res://res/table.png" id="29_shh8x"]
 [ext_resource type="Texture2D" uid="uid://pxb305w8hosm" path="res://res/133794-2.jpg" id="34_6auyk"]
 [ext_resource type="FontFile" uid="uid://dnn7innfr15hi" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="35_tdcn4"]
+[ext_resource type="Script" path="res://scripts/pot.gd" id="39_n4wei"]
 [ext_resource type="Texture2D" uid="uid://bdxbek8o3pkal" path="res://res/plakat2.jpg" id="51_y4toq"]
 [ext_resource type="Texture2D" uid="uid://b27wxkfb8e886" path="res://res/callendar1.png" id="52_6filg"]
 [ext_resource type="AudioStream" uid="uid://xfvxk6jgkbem" path="res://sounds/stovetop-burner.mp3" id="53_6filg"]
@@ -61,6 +62,9 @@
 shader = ExtResource("5_glees")
 shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5ba2"]
+radius = 246.31
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7gby3"]
 shader = ExtResource("5_glees")
@@ -135,6 +139,15 @@ texture = ExtResource("6_bwcr2")
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("7_0vd70")
 
+[node name="Area2D" type="Area2D" parent="2/knob"]
+position = Vector2(6.6666665, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/knob/Area2D"]
+position = Vector2(-1060, 1066.6666)
+shape = SubResource("CircleShape2D_q5ba2")
+one_way_collision_margin = 0.0
+debug_color = Color(0.96101993, 1.1551381e-06, 0.51547384, 0.41960785)
+
 [node name="ProgressBar" type="ProgressBar" parent="2"]
 offset_left = -64.0
 offset_top = -304.0
@@ -190,6 +203,15 @@ texture = ExtResource("6_bwcr2")
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("7_0vd70")
 
+[node name="Area2D" type="Area2D" parent="4/knob"]
+position = Vector2(-1346.6665, -73.33325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/knob/Area2D"]
+position = Vector2(286.66663, 1146.6666)
+shape = SubResource("CircleShape2D_q5ba2")
+one_way_collision_margin = 0.0
+debug_color = Color(0.96101993, 1.1551381e-06, 0.51547384, 0.41960785)
+
 [node name="ProgressBar" type="ProgressBar" parent="4"]
 offset_left = 654.0
 offset_top = -242.0
@@ -206,7 +228,7 @@ script = ExtResource("9_dy6ti")
 
 [node name="pot" type="Node2D" parent="4"]
 position = Vector2(0, -280)
-script = ExtResource("10_65vkx")
+script = ExtResource("39_n4wei")
 
 [node name="potimg" type="Sprite2D" parent="4/pot"]
 position = Vector2(505.71436, 247.7143)
@@ -259,6 +281,15 @@ texture = ExtResource("6_bwcr2")
 [node name="inner" type="Sprite2D" parent="3/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("7_0vd70")
+
+[node name="Area2D" type="Area2D" parent="3/knob"]
+position = Vector2(-1346.6665, -73.33325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/knob/Area2D"]
+position = Vector2(286.66663, 1146.6666)
+shape = SubResource("CircleShape2D_q5ba2")
+one_way_collision_margin = 0.0
+debug_color = Color(0.96101993, 1.1551381e-06, 0.51547384, 0.41960785)
 
 [node name="ProgressBar" type="ProgressBar" parent="3"]
 unique_name_in_owner = true
@@ -366,6 +397,15 @@ texture = ExtResource("6_bwcr2")
 [node name="inner" type="Sprite2D" parent="1/knob"]
 position = Vector2(-1057.3333, 1069.3333)
 texture = ExtResource("7_0vd70")
+
+[node name="Area2D" type="Area2D" parent="1/knob"]
+position = Vector2(-1346.6665, -73.33325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/knob/Area2D"]
+position = Vector2(286.66663, 1146.6666)
+shape = SubResource("CircleShape2D_q5ba2")
+one_way_collision_margin = 0.0
+debug_color = Color(0.96101993, 1.1551381e-06, 0.51547384, 0.41960785)
 
 [node name="ProgressBar" type="ProgressBar" parent="1"]
 offset_left = -330.0
@@ -579,3 +619,12 @@ stream = ExtResource("55_hy2aj")
 
 [node name="LevelCompleteSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("56_q5ba2")
+
+[connection signal="mouse_entered" from="2/knob/Area2D" to="2/knob" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="2/knob/Area2D" to="2/knob" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="4/knob/Area2D" to="4/knob" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="4/knob/Area2D" to="4/knob" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="3/knob/Area2D" to="3/knob" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="3/knob/Area2D" to="3/knob" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="1/knob/Area2D" to="1/knob" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="1/knob/Area2D" to="1/knob" method="_on_area_2d_mouse_exited"]

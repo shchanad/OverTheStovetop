@@ -66,12 +66,32 @@ func _ready() -> void:
 	for i in range(knobs.size()):
 		# We bind the index 'i' so the function knows WHICH knob sent the signal
 		knobs[i].state_changed.connect(_on_any_knob_turned.bind(i))
+		
+		knobs[i].hovered.connect(_select_knob__.bind(i))
+		knobs[i].unhovered.connect(_deselect_knob.bind(i))
+		
 		knobs[i].set_block_signals(true)
 		knobs[i].set_state(current_variables[i], true)
 		knobs[i].set_block_signals(false)
 	
 	for i in range(bars.size()):
 		bars[i].overflow_detected.connect(_on_any_bar_overflow.bind(i))
+		
+# Updates to your helper functions
+func _select_knob__(index: int) -> void:
+	# If we are already hovering a different knob, turn its highlight off first
+	if selected_knob != -1 and selected_knob != index:
+		knobs[selected_knob].disable_highlight()
+		
+	selected_knob = index
+	knobs[index].enable_highlight()
+
+func _deselect_knob(index: int) -> void:
+	# Only deselect if the mouse is leaving the currently selected knob
+	# (Prevents bugs if the mouse moves very fast between knobs)
+	if selected_knob == index:
+		knobs[selected_knob].disable_highlight()
+		selected_knob = -1
 
 func _process(_delta: float) -> void:
 	if result_ui.visible:
@@ -92,11 +112,11 @@ func _process(_delta: float) -> void:
 	_update_boiling_audio()
 
 	if selected_knob >= 0 and selected_knob <= 3:
-		if Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed("turn_right"):
 			click_sound.play()
 			score_manager.register_move()
 			knobs[selected_knob].step_forward(use_clamp_mode)
-		elif Input.is_action_just_pressed("ui_left"):
+		elif Input.is_action_just_pressed("turn_left"):
 			click_sound.play()
 			score_manager.register_move()
 			knobs[selected_knob].step_backward(use_clamp_mode)
@@ -245,6 +265,7 @@ func _check_win_condition() -> void:
 		if val != 0:
 			return 
 	
+	knobs[selected_knob].disable_highlight()
 	boiling_sound.playing = false
 	print("Level Complete! All variables are 0!")
 	var final_score = score_manager.calculate_final_score()
