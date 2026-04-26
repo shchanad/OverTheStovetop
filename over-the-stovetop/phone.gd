@@ -8,21 +8,26 @@ extends Sprite2D
 @onready var audio_player: AudioStreamPlayer2D = $RingSound
 @onready var click_area: Area2D = $Area2D
 
-# Новые ссылки на интерфейс диалога
 @onready var dialogue_ui: CanvasLayer = $DialogueUI
 @onready var dialogue_label: Label = $DialogueUI/Panel/Label
 @onready var closeup_phone: TextureRect = $DialogueUI/BigPhone 
 
-var is_ringing: bool = false
-var is_talking: bool = false # Флаг, что сейчас идет разговор
-var current_line_index: int = 0 # Индекс текущей фразы
+@onready var forgot_label: Panel = $DialogueUI/Thoughts
+@onready var rules_panel: Control = $DialogueUI/RulePanel
 
-# Массив с нашими фразами
+var is_ringing: bool = false
+var is_talking: bool = false
+var current_line_index: int = 0
+
+# Переменная для шагов ПОСЛЕ разговора
+# 0 - разговор, 1 - "черт забыл", 2 - правила
+var intro_step: int = 0
+
 var dialogue_lines: Array[String] = [
 	"Haló, spáči! Už ses probudil?",
 	"Volám jen pro jistotu: vypnul jsi sporák, když jsi vstal?",
 	"Nechala jsem ti tam ohřívat oběd a hned běžela do práce.",
-	"To jsi hodný! Už jsem si začínala dělat starosti.",
+	"To jsi hodný! Už jsem si začíнала dělat starosti.",
 	"Za chvíli budu doma, končím směnu.",
 	"Tak se běž umýt, až přijdu, budeme večeřet. Pa!"	
 ]
@@ -35,8 +40,9 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	click_area.input_event.connect(_on_phone_clicked)
 	
-	# Убедимся, что диалог скрыт при старте
 	dialogue_ui.visible = false
+	forgot_label.visible = false # Скрываем в начале
+	rules_panel.visible = false  # Скрываем в начале
 
 func _process(_delta: float) -> void:
 	if is_ringing:
@@ -65,36 +71,46 @@ func _on_phone_clicked(_viewport: Node, event: InputEvent, _shape_idx: int) -> v
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_ringing and not is_talking:
 			stop_ringing()
-			start_dialogue() # Начинаем разговор после снятия трубки
-
-# --- НОВАЯ ЛОГИКА ДИАЛОГА ---
+			start_dialogue()
 
 func start_dialogue() -> void:
 	is_talking = true
 	current_line_index = 0
 	dialogue_ui.visible = true
+	closeup_phone.visible = true # Телефон виден
 	show_current_line()
 
 func show_current_line() -> void:
-	# Выводим текст из массива по текущему индексу
 	dialogue_label.text = dialogue_lines[current_line_index]
 
 func end_dialogue() -> void:
 	is_talking = false
-	dialogue_ui.visible = false
-	print("Разговор завершен!")
-	# Опционально: можно снова запустить таймер, чтобы позвонили еще раз
-	# timer.start(10.0)
+	
+	closeup_phone.visible = false
+	$DialogueUI/Panel.visible = false 
+	
+	forgot_label.visible = true
+	intro_step = 1
 
-# Эта функция встроена в Godot, она ловит все нажатия (клавиатура/мышь)
 func _input(event: InputEvent) -> void:
-	# Если мы сейчас разговариваем и игрок кликнул левой кнопкой мыши
-	if is_talking and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		# Увеличиваем индекс на 1 (переходим к следующей фразе)
-		current_line_index += 1
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if is_talking:
+			current_line_index += 1
+			if current_line_index < dialogue_lines.size():
+				show_current_line()
+			else:
+				end_dialogue()
 		
-		# Проверяем, остались ли еще фразы в массиве
-		if current_line_index < dialogue_lines.size():
-			show_current_line()
 		else:
-			end_dialogue()
+			if intro_step == 1:
+
+				forgot_label.visible = false
+				rules_panel.visible = true
+				intro_step = 2
+			elif intro_step == 2:
+
+				start_game_level()
+
+func start_game_level() -> void:
+
+	get_tree().change_scene_to_file("res://scenes/testing_scene.tscn")

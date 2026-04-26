@@ -163,6 +163,13 @@ func _on_any_knob_turned(new_state: int, delta: int, knob_index: int) -> void:
 
 func show_level_complete(final_score: int) -> void:
 	result_ui.visible = true
+	var dimmer = $ResultUI/Dimmer
+	dimmer.modulate.a = 0.0
+	
+	var tween = create_tween()
+	tween.tween_property(dimmer, "modulate:a", 1.0, 0.5)
+
+	
 	var moves_number_str__ = "Moves number: " + str(score_manager.moves_number) + "\n"
 	var level_score_str__ = "Level score: " + str(final_score) + "\n"
 	var total_score_str__ = "Total score: " + str(score_manager.total_score) + "\n"
@@ -223,19 +230,15 @@ func _check_win_condition() -> void:
 	show_level_complete(final_score)
 	
 func _on_next_button_pressed() -> void:
-	# Скрываем меню результатов
 	result_ui.visible = false
 	for bar in bars:
 		bar.reset()
 	
-	# Проверяем, есть ли следующий уровень
 	if current_level_index < level_list.size() - 1:
 		current_level_index += 1
 		load_level(current_level_index)
 	else:
 		print("All levels completed!")
-		# Здесь можно либо закрыть игру, либо вернуть в главное меню
-		# get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 # PAUSE
 func _toggle_pause() -> void:
