@@ -7,8 +7,9 @@ var boil_speed: float = 40.0
 var heat_power: float = 0.0 
 
 @onready var original_pos = position
-signal overflow_detected(time: float)
-var overflow_time: float = 0.0
+signal overflow_detected(delta: float)
+
+var active: bool = true
 
 func _ready():
 	# Создаем стиль для фона (рамка и подложка)
@@ -37,7 +38,17 @@ func _ready():
 	show_percentage = false
 
 
+func reset():
+	active = true
+	boil_level = 0
+	set_heat_power(0.0)
+
+
 func _process(delta):
+	# скипаем если неактивно (между уровнями)
+	if not active:
+		return
+
 	# 1. СКОРОСТЬ КИПЕНИЯ (Квадратичная зависимость)
 	# heat_power * heat_power дает огромную разницу между 0.2 и 1.0
 	if heat_power > 0:
@@ -52,8 +63,8 @@ func _process(delta):
 	self.value = move_toward(self.value, boil_level, 300.0 * delta)
 	
 	# 3. ВИЗУАЛ
-	var ratio = value / max_level
-	self.modulate = Color.GREEN.lerp(Color.RED, ratio)
+	var r = value / max_level
+	self.modulate = Color.GREEN.lerp(Color.RED, r)
 	
 	# 4. ТРЯСКА
 	if value > 80.0:
@@ -64,11 +75,8 @@ func _process(delta):
 
 	if value >= max_level:
 		# Можно добавить сброс или паузу, чтобы не спамило
-		overflow_time += delta
-		overflow_detected.emit(overflow_time)
+		overflow_detected.emit(delta)
 		# print("БАБАХ!")
-	else:
-		overflow_time = 0.0
 
 func set_heat_power(new_value: float) -> void:
 	var clamped_new = clampf(new_value/5, 0.0, 1.0)

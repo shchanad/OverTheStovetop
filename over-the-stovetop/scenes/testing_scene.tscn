@@ -1,153 +1,57 @@
-[gd_scene load_steps=41 format=3 uid="uid://gasd2lj8xq88"]
+[gd_scene load_steps=57 format=3 uid="uid://gasd2lj8xq88"]
 
 [ext_resource type="Script" uid="uid://75a0c1kewal7" path="res://scripts/controller.gd" id="1_ltgxd"]
+[ext_resource type="Texture2D" uid="uid://ccbclc5j238kq" path="res://res/cat_nice1.png" id="2_73axr"]
 [ext_resource type="Script" uid="uid://62dnkt5ska83" path="res://levels/puzzle_level.gd" id="2_h58fg"]
 [ext_resource type="Resource" uid="uid://k6l7t2ekdg3r" path="res://levels/level_01.tres" id="2_ltgxd"]
-[ext_resource type="Resource" path="res://levels/level_03.tres" id="2_maxak"]
+[ext_resource type="Resource" uid="uid://cpj0ahh72lhkt" path="res://levels/level_03.tres" id="2_maxak"]
 [ext_resource type="Resource" uid="uid://dxfxg4mflibw4" path="res://levels/level_02.tres" id="2_nihl2"]
 [ext_resource type="Texture2D" uid="uid://b4jr3u8j33sm1" path="res://res/background.jpg" id="3_5unbq"]
+[ext_resource type="Texture2D" uid="uid://btqw6n62tqy44" path="res://res/cat_nice2.png" id="3_shh8x"]
 [ext_resource type="Texture2D" uid="uid://chjoga15qlvc2" path="res://res/stovetop.png" id="3_tvk4s"]
+[ext_resource type="Script" uid="uid://dulp2v4gkewds" path="res://scripts/knob.gd" id="4_65vkx"]
+[ext_resource type="Texture2D" uid="uid://g6narxgfp6bn" path="res://res/cat_nice3.png" id="4_fbygd"]
 [ext_resource type="Shader" uid="uid://x6di0dgvdv1i" path="res://materials/outer_shader.gdshader" id="5_glees"]
-[ext_resource type="Resource" path="res://levels/level_04.tres" id="6_6auyk"]
+[ext_resource type="Texture2D" uid="uid://c7dkmmr0nj4kw" path="res://res/cat_almost1.png" id="5_y4toq"]
+[ext_resource type="Resource" uid="uid://cdlmj8i2y4e85" path="res://levels/level_04.tres" id="6_6auyk"]
+[ext_resource type="Texture2D" uid="uid://bxcpdbk0tnh5a" path="res://res/cat_almost2.png" id="6_6filg"]
 [ext_resource type="Texture2D" uid="uid://b3gvkws0jgq5u" path="res://res/around_knob.png" id="6_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://c4q6ltiin8uxd" path="res://res/knob.png" id="7_0vd70"]
-[ext_resource type="Resource" path="res://levels/level_05.tres" id="7_tdcn4"]
+[ext_resource type="Texture2D" uid="uid://1b6t8p0r762e" path="res://res/cat_like1.png" id="7_3xngv"]
+[ext_resource type="Resource" uid="uid://d16eeo0vivbnd" path="res://levels/level_05.tres" id="7_tdcn4"]
 [ext_resource type="Script" uid="uid://bd3gsymvoo6ve" path="res://scripts/progress_bar.gd" id="8_4kp1c"]
-[ext_resource type="Resource" path="res://levels/level_06.tres" id="8_25hb4"]
+[ext_resource type="Resource" uid="uid://b07dhbjc8ld4n" path="res://levels/level_06.tres" id="8_25hb4"]
+[ext_resource type="Texture2D" uid="uid://cbvvnwhuu1ktk" path="res://res/cat_like2.png" id="8_hy2aj"]
 [ext_resource type="Script" uid="uid://c3rcuseirtpbn" path="res://scripts/fire_particles.gd" id="9_dy6ti"]
-[ext_resource type="Resource" path="res://levels/level_07.tres" id="9_iddgy"]
-[ext_resource type="Script" uid="uid://5y2jwsbmfkei" path="res://scripts/teapot.gd" id="10_0vd70"]
+[ext_resource type="Resource" uid="uid://du0ci0pvcm32j" path="res://levels/level_07.tres" id="9_iddgy"]
+[ext_resource type="Texture2D" uid="uid://x5cvijxxvt58" path="res://res/cat_meh1.png" id="9_q5ba2"]
+[ext_resource type="Script" path="res://scripts/teapot.gd" id="10_0vd70"]
 [ext_resource type="Script" uid="uid://c4bcgrwk23vc8" path="res://pot.gd" id="10_65vkx"]
-[ext_resource type="Script" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
-[ext_resource type="Resource" path="res://levels/level_08.tres" id="10_uc3ay"]
-[ext_resource type="Resource" path="res://levels/level_09.tres" id="11_bf31k"]
+[ext_resource type="Texture2D" uid="uid://cvhk1ll8po8y4" path="res://res/cat_bad1.png" id="10_n4wei"]
+[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nihl2"]
+[ext_resource type="Resource" uid="uid://dxnsti008au5a" path="res://levels/level_08.tres" id="10_uc3ay"]
+[ext_resource type="Texture2D" uid="uid://cbsut52wxbfqd" path="res://res/cat_bad2.png" id="11_asv8j"]
+[ext_resource type="Resource" uid="uid://doe3qt2ftekie" path="res://levels/level_09.tres" id="11_bf31k"]
 [ext_resource type="Texture2D" uid="uid://c2ml5dan1bf8t" path="res://res/teapot.png" id="11_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://dm0jehisbnj0i" path="res://res/borsch.png" id="11_glees"]
-[ext_resource type="Resource" path="res://levels/level_10.tres" id="12_8ml0m"]
+[ext_resource type="Resource" uid="uid://das6galch563e" path="res://levels/level_10.tres" id="12_8ml0m"]
 [ext_resource type="Texture2D" uid="uid://qbiqiojl3l85" path="res://res/pot1.png" id="12_bwcr2"]
 [ext_resource type="Texture2D" uid="uid://cflx05rnwmnt" path="res://res/oval.png" id="12_glees"]
+[ext_resource type="Texture2D" uid="uid://dsknkiht5r7kt" path="res://res/cat_bad3.png" id="12_ubp0t"]
 [ext_resource type="Resource" uid="uid://cyxm7mpdoiyye" path="res://levels/level_11.tres" id="13_6e6ul"]
+[ext_resource type="Texture2D" uid="uid://b87m8qvtstjm3" path="res://res/cat_bad4.png" id="13_cnbcc"]
 [ext_resource type="Texture2D" uid="uid://bqjoev1vipq52" path="res://res/pot2.png" id="13_dy6ti"]
+[ext_resource type="Texture2D" uid="uid://ybwjx7cjal5a" path="res://res/cat_bad5.png" id="14_7q7m3"]
+[ext_resource type="Texture2D" uid="uid://dkujkx1lf8nwr" path="res://res/cat_bad6.png" id="15_na5ao"]
 [ext_resource type="Texture2D" uid="uid://cd0a5jhidqthn" path="res://res/milk.jpg" id="15_synk6"]
-[ext_resource type="Script" uid="uid://dkhnsve4yqgs" path="res://scripts/turka.gd" id="16_v7a1m"]
+[ext_resource type="Script" path="res://scripts/turka.gd" id="16_v7a1m"]
 [ext_resource type="Texture2D" uid="uid://c8ojduqi7fqfe" path="res://res/turka.png" id="17_maxak"]
 [ext_resource type="Texture2D" uid="uid://b3766evq4v0ro" path="res://res/coffee.png" id="18_5unbq"]
 [ext_resource type="Texture2D" uid="uid://pxb305w8hosm" path="res://res/133794-2.jpg" id="34_6auyk"]
+[ext_resource type="FontFile" uid="uid://dnn7innfr15hi" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="35_tdcn4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hs6ho"]
 blend_mode = 1
-
-[sub_resource type="GDScript" id="GDScript_v7a1m"]
-script/source = "extends Node2D
-class_name Knob
-
-@onready var inner_knob: Sprite2D = $inner
-@onready var outer_knob: Sprite2D = $outer
-@onready var progress_bar = get_node(\"../ProgressBar\")
-@onready var fire = get_node(\"../fireParticles\")
-var HIGHLIGHTING_VALUE = 6 # how much highlighted
-
-# Emitted whenever the state successfully changes, useful for the parent node
-signal state_changed(new_state: int, delta: int)
-
-# ANGLES
-const STATES: Array[float] = [0.0, 46.0, 118.0, 180.0, 242.0, 314.0]
-
-# Exposed to the inspector so you can set the starting state
-@export_range(0, 5) var current_state: int = 0
-
-@export_group(\"Animation\")
-@export var anim_duration: float = 0.3
-# Assign a new Curve in the inspector to visually control the animation speed.
-@export var custom_curve: Curve 
-# Fallback transition if no custom curve is provided
-@export var fallback_transition: Tween.TransitionType = Tween.TRANS_SINE 
-
-var _tween: Tween
-
-func _ready() -> void:
-	# Snap to the initial state immediately on load without animating
-	inner_knob.rotation_degrees = STATES[current_state]
-
-
-# --- Public Methods (Call these from your parent scene) ---
-func set_state(new_state: int, animate: bool = true) -> void:
-	new_state = new_state % STATES.size()
-	var delta = new_state - current_state
-	
-	if current_state == new_state and (_tween == null or not _tween.is_running()):
-		return # We are already in this state and not moving
-
-	current_state = new_state
-	var target_degrees = STATES[current_state]
-
-	if animate:
-		_animate_rotation(target_degrees)
-	else:
-		inner_knob.rotation_degrees = target_degrees
-
-	state_changed.emit(current_state, delta)
-	progress_bar.set_heat_power(current_state)
-	fire.update_fire(current_state)
-
-func get_state() -> int:
-	return current_state
-
-func step_forward(clamp_mode: bool) -> void:
-	if clamp_mode:
-		set_state(clampi(current_state + 1, 0, STATES.size() - 1))
-	else:
-		set_state((current_state + 1) % STATES.size())
-
-func step_backward(clamp_mode: bool) -> void:
-	if clamp_mode:
-		set_state(clampi(current_state - 1, 0, STATES.size() - 1))
-	else:
-		set_state((current_state + STATES.size() - 1) % STATES.size())
-
-# Call this to turn the highlight on
-func enable_highlight() -> void:
-	# Access the shader material and change the thickness to 4.5 pixels
-	outer_knob.material.set_shader_parameter(\"line_thickness\", HIGHLIGHTING_VALUE)
-	# You can also change the color on the fly!
-	# outer_knob.material.set_shader_parameter(\"line_color\", Color.YELLOW)
-
-# Call this to turn the highlight off
-func disable_highlight() -> void:
-	outer_knob.material.set_shader_parameter(\"line_thickness\", 0.0)
-
-# --- Internal Animation Logic ---		
-func _animate_rotation(target_degrees: float) -> void:
-	# If the knob is already animating, stop it so we don't get glitchy overlaps
-	if _tween and _tween.is_valid():
-		_tween.kill()
-		
-	_tween = create_tween()
-	
-	var start_degrees = inner_knob.rotation_degrees
-	
-	# FIND THE SHORTEST PATH:
-	# 1. Find the raw difference between where we want to go and where we are.
-	# 2. Wrap that difference strictly between -180 and 180 degrees.
-	var shortest_diff = wrapf(target_degrees - start_degrees, -180.0, 180.0)
-	 
-	# 3. Add that shortest difference to our current rotation to get our true target.
-	var actual_target_degrees = start_degrees + shortest_diff
-
-	if custom_curve != null:
-		# Use actual_target_degrees instead of trying to add 360 manually
-		_tween.tween_method(_apply_custom_curve.bind(start_degrees, actual_target_degrees), 0.0, 1.0, anim_duration)
-	else:
-		# Godot's built-in smooth tweening now also uses the shortest path!
-		_tween.set_trans(fallback_transition)
-		_tween.set_ease(Tween.EASE_IN_OUT)
-		_tween.tween_property(inner_knob, \"rotation_degrees\", actual_target_degrees, anim_duration)
-
-# Evaluates the custom curve from 0.0 to 1.0 to lerp between angles
-func _apply_custom_curve(t: float, start_val: float, end_val: float) -> void:
-	var curve_weight = custom_curve.sample(t)
-	inner_knob.rotation_degrees = lerpf(start_val, end_val, curve_weight)
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wlvp0"]
 shader = ExtResource("5_glees")
@@ -170,12 +74,27 @@ shader_parameter/line_color = Color(3.9467217e-05, 0.44135746, 0.97687656, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6auyk"]
-font_color = Color(0, 0, 0, 1)
+font = ExtResource("35_tdcn4")
+font_size = 24
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6auyk"]
+bg_color = Color(0.6, 0.6, 0.6, 0.78431374)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.2627451)
+shadow_size = 8
+
 [node name="All" type="Node2D"]
 script = ExtResource("1_ltgxd")
+nice_images = Array[Texture2D]([ExtResource("2_73axr"), ExtResource("3_shh8x"), ExtResource("4_fbygd")])
+almost_images = Array[Texture2D]([ExtResource("5_y4toq"), ExtResource("6_6filg")])
+like_images = Array[Texture2D]([ExtResource("7_3xngv"), ExtResource("8_hy2aj")])
+meh_images = Array[Texture2D]([ExtResource("9_q5ba2")])
+bad_images = Array[Texture2D]([ExtResource("10_n4wei"), ExtResource("11_asv8j"), ExtResource("12_ubp0t"), ExtResource("13_cnbcc"), ExtResource("14_7q7m3"), ExtResource("15_na5ao")])
 level_list = Array[ExtResource("2_h58fg")]([ExtResource("2_ltgxd"), ExtResource("2_nihl2"), ExtResource("2_maxak"), ExtResource("6_6auyk"), ExtResource("7_tdcn4"), ExtResource("8_25hb4"), ExtResource("9_iddgy"), ExtResource("10_uc3ay"), ExtResource("11_bf31k"), ExtResource("12_8ml0m"), ExtResource("13_6e6ul")])
 
 [node name="Img20260425212219279" type="Sprite2D" parent="."]
@@ -201,7 +120,7 @@ scale = Vector2(0.5, 0.5)
 [node name="knob" type="Node2D" parent="2"]
 position = Vector2(192, 16)
 scale = Vector2(0.3, 0.3)
-script = SubResource("GDScript_v7a1m")
+script = ExtResource("4_65vkx")
 
 [node name="outer" type="Sprite2D" parent="2/knob"]
 material = SubResource("ShaderMaterial_wlvp0")
@@ -256,7 +175,7 @@ scale = Vector2(0.5, 0.5)
 [node name="knob" type="Node2D" parent="4"]
 position = Vector2(596, 38)
 scale = Vector2(0.3, 0.3)
-script = SubResource("GDScript_v7a1m")
+script = ExtResource("4_65vkx")
 
 [node name="outer" type="Sprite2D" parent="4/knob"]
 material = SubResource("ShaderMaterial_7gby3")
@@ -326,7 +245,7 @@ scale = Vector2(0.5, 0.5)
 unique_name_in_owner = true
 position = Vector2(390, 28)
 scale = Vector2(0.3, 0.3)
-script = SubResource("GDScript_v7a1m")
+script = ExtResource("4_65vkx")
 
 [node name="outer" type="Sprite2D" parent="3/knob"]
 material = SubResource("ShaderMaterial_kedo2")
@@ -433,7 +352,7 @@ texture = ExtResource("11_glees")
 
 [node name="knob" type="Node2D" parent="1"]
 scale = Vector2(0.3, 0.3)
-script = SubResource("GDScript_v7a1m")
+script = ExtResource("4_65vkx")
 
 [node name="outer" type="Sprite2D" parent="1/knob"]
 material = SubResource("ShaderMaterial_7yy31")
@@ -474,14 +393,150 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="ScoreLabel" type="Label" parent="ResultUI"]
-offset_left = 459.0
-offset_top = 247.0
-offset_right = 706.0
-offset_bottom = 317.0
+offset_left = 345.0
+offset_top = 252.0
+offset_right = 592.0
+offset_bottom = 322.0
 label_settings = SubResource("LabelSettings_6auyk")
+horizontal_alignment = 1
 
 [node name="NextButton" type="Button" parent="ResultUI"]
-offset_left = 463.0
-offset_top = 391.0
-offset_right = 709.0
-offset_bottom = 462.0
+offset_left = 345.0
+offset_top = 410.0
+offset_right = 591.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+
+[node name="ResultImage" type="TextureRect" parent="ResultUI"]
+custom_minimum_size = Vector2(198, 198)
+offset_left = 717.0
+offset_top = 150.0
+offset_right = 915.0
+offset_bottom = 348.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+
+[node name="ScoreBoard" type="PanelContainer" parent="ScoreUI"]
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 288.0
+offset_bottom = 214.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6auyk")
+
+[node name="Margins" type="MarginContainer" parent="ScoreUI/ScoreBoard"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VerticalLayout" type="VBoxContainer" parent="ScoreUI/ScoreBoard/Margins"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+text = "PUZZLE STATUS"
+
+[node name="Line1" type="HSeparator" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+
+[node name="BaseScoreText" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+text = "Current Score:"
+
+[node name="BaseScoreValue" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+
+[node name="MovesText" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+text = "Moves Taken:"
+
+[node name="MovesValue" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Line2" type="HSeparator" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout"]
+layout_mode = 2
+
+[node name="TotalScoreText" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+text = "TOTAL SCORE:"
+
+[node name="TotalScoreValue" type="Label" parent="ScoreUI/ScoreBoard/Margins/VerticalLayout/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7647059, 0.81960785, 0, 1)
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="BackgroundDimmer" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/BackgroundDimmer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/BackgroundDimmer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 40
+text = "PAUSED"
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_tdcn4")
+theme_override_font_sizes/font_size = 24
+text = "Start Again"
