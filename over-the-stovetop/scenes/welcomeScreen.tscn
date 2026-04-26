@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://box8rq56tklha"]
+[gd_scene load_steps=10 format=3 uid="uid://box8rq56tklha"]
 
-[ext_resource type="FontFile" uid="uid://dnn7innfr15hi" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="1_3odj5"]
 [ext_resource type="Script" uid="uid://d2oue5hbumnlv" path="res://scenes/welcome_screen.gd" id="1_jdgxb"]
 [ext_resource type="PackedScene" uid="uid://0ibooec5tjer" path="res://scenes/startScene.tscn" id="2_6acdu"]
+[ext_resource type="Texture2D" uid="uid://x1c2qlvdmq2c" path="res://res/main_background.png" id="3_ujinm"]
 [ext_resource type="AudioStream" uid="uid://bd2j6skk7dno5" path="res://sounds/lofi.mp3" id="4_fg03d"]
+[ext_resource type="Texture2D" uid="uid://40cbxsoeu7rm" path="res://res/start.png" id="5_s6k6a"]
+[ext_resource type="Texture2D" uid="uid://cibec0pftfwdm" path="res://res/start_pressed.png" id="6_8q58n"]
+[ext_resource type="Texture2D" uid="uid://brgbe6onli1mn" path="res://res/exit.png" id="6_hlctm"]
+[ext_resource type="Script" uid="uid://dq2o5bnh07213" path="res://scripts/hover_button.gd" id="7_8xnc2"]
+[ext_resource type="Texture2D" uid="uid://c50gbnwoxeb28" path="res://res/exit_pressed.png" id="8_8xnc2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,8 +25,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = 7.208252
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_ujinm")
+expand_mode = 1
 
 [node name="CenterAligner" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -34,29 +44,34 @@ grow_vertical = 2
 [node name="MenuLayout" type="VBoxContainer" parent="CenterAligner"]
 layout_mode = 2
 
-[node name="GameTitle" type="Label" parent="CenterAligner/MenuLayout"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_3odj5")
-theme_override_font_sizes/font_size = 64
-text = "OVER THE STOVETOP"
-
 [node name="Spacer" type="MarginContainer" parent="CenterAligner/MenuLayout"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 40
 
-[node name="StartButton" type="Button" parent="CenterAligner/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_3odj5")
-text = "Start Game"
-
-[node name="QuitButton" type="Button" parent="CenterAligner/MenuLayout"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_3odj5")
-text = "Quit"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_fg03d")
 autoplay = true
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 516.0
+offset_right = 477.013
+offset_bottom = 596.0
+texture_normal = ExtResource("5_s6k6a")
+texture_pressed = ExtResource("6_8q58n")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_8xnc2")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 528.0
+offset_right = 955.0
+offset_bottom = 593.0
+texture_normal = ExtResource("6_hlctm")
+texture_pressed = ExtResource("8_8xnc2")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_8xnc2")

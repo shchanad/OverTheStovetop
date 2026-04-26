@@ -1,7 +1,7 @@
 extends Control
 
-@onready var start_button: Button = $CenterAligner/MenuLayout/StartButton
-@onready var quit_button: Button = $CenterAligner/MenuLayout/QuitButton
+@onready var start_button: TextureButton = $StartButton
+@onready var quit_button: TextureButton = $ExitButton
 
 # Drag your main game scene (.tscn) into this slot in the inspector!
 @export var main_game_scene: PackedScene
