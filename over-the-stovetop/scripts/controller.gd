@@ -20,6 +20,7 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var resume_button: Button = $PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer/ResumeButton
 @onready var restart_button: Button = $PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer/RestartButton
+@onready var menu_button: Button = $PauseMenu/BackgroundDimmer/CenterContainer/VBoxContainer/MenuButton
 var paused: bool = false
 
 var selected_knob: int = -1
@@ -40,12 +41,16 @@ var bar_overflow_time: Array[float] = [0.0, 0.0, 0.0, 0.0]
 
 # Get a reference to your audio node
 @onready var background_sound: AudioStreamPlayer2D = $BackgroundSound
+@onready var boiling_sound: AudioStreamPlayer2D = $BoilingSound
+@onready var click_sound: AudioStreamPlayer2D = $ClickSound
+@onready var level_complete_sound: AudioStreamPlayer2D = $LevelCompleteSound
 
 func _ready() -> void:
 	next_button.pressed.connect(_on_next_button_pressed)
 
 	resume_button.pressed.connect(_on_resume_pressed)
 	restart_button.pressed.connect(_on_restart_pressed)
+	menu_button.pressed.connect(_on_menu_pressed)
 	
 	if level_list.size() > 0:
 		load_level(0) # Загружаем самый первый уровень из списка
@@ -83,12 +88,16 @@ func _process(_delta: float) -> void:
 		_select_knob(2)
 	elif Input.is_key_pressed(KEY_4):
 		_select_knob(3)
+		
+	_update_boiling_audio()
 
 	if selected_knob >= 0 and selected_knob <= 3:
 		if Input.is_action_just_pressed("ui_right"):
+			click_sound.play()
 			score_manager.register_move()
 			knobs[selected_knob].step_forward(use_clamp_mode)
 		elif Input.is_action_just_pressed("ui_left"):
+			click_sound.play()
 			score_manager.register_move()
 			knobs[selected_knob].step_backward(use_clamp_mode)
 
@@ -116,6 +125,8 @@ func load_level(index: int) -> void:
 		
 	print("Level loaded: ", index + 1)
 	_update_background_audio()
+	boiling_sound.playing = true
+	_update_boiling_audio()
 
 # Helper function to clean up your _process selection code
 func _select_knob(index: int) -> void:
@@ -164,6 +175,7 @@ func _on_any_knob_turned(new_state: int, delta: int, knob_index: int) -> void:
 		knobs[i].set_block_signals(false)
 
 	_update_background_audio()
+	_update_boiling_audio()
 	print("Current Puzzle State: ", current_variables)
 	_check_win_condition()
 
@@ -175,29 +187,41 @@ func show_level_complete(final_score: int) -> void:
 	var tween = create_tween()
 	tween.tween_property(dimmer, "modulate:a", 1.0, 0.5)
 
-	
-	var moves_number_str__ = "Moves number: " + str(score_manager.moves_number) + "\n"
-	var level_score_str__ = "Level score: " + str(final_score) + "\n"
-	var total_score_str__ = "Total score: " + str(score_manager.total_score) + "\n"
-	score_label.text = "Survived!\n" + moves_number_str__ + level_score_str__ + total_score_str__
-	if current_level_index >= level_list.size() - 1:
-		next_button.text = "Finish Game"
-	else:
-		next_button.text = "Next Level"
-
+	var score_label_str__: String
 	var selected_texture: Texture2D = null
 	# 1. Check the score ranges and pick a random image from the correct array
 	# (Adjust these numbers to match your actual scoring system thresholds!)
 	if final_score >= 900:
 		selected_texture = _get_random_image(nice_images)
+		score_label_str__ = "SUPER GUD\n"
 	elif final_score >= 700:
 		selected_texture = _get_random_image(almost_images)
+		score_label_str__ = "NICE SON\n"
 	elif final_score >= 500:
 		selected_texture = _get_random_image(like_images)
+		score_label_str__ = "MESSED UP A BIT\n"
 	elif final_score >= 300:
 		selected_texture = _get_random_image(meh_images)
+		score_label_str__ = "SON...\n"
 	else:
 		selected_texture = _get_random_image(bad_images)
+		score_label_str__ = "MOM'S DISAPPOINTMENT\n"
+	
+	var dynamic_pitch = remap(final_score, 1.0, 10000.0, 0.4, 2.0)
+	dynamic_pitch = clampf(dynamic_pitch, 0.4, 2.0)
+	level_complete_sound.pitch_scale = dynamic_pitch
+	level_complete_sound.play()
+		
+	var moves_number_str__ = "Moves number: " + str(score_manager.moves_number) + "\n"
+	var level_score_str__ = "Level score: " + str(final_score) + "\n"
+	var total_score_str__ = "Total score: " + str(int(score_manager.total_score)) + "\n"
+	score_label.text = score_label_str__ + moves_number_str__ + level_score_str__ + total_score_str__
+	if current_level_index >= level_list.size() - 1:
+		next_button.text = "Finish Game"
+	else:
+		next_button.text = "Next Level"
+
+	
 		
 	# 2. Assign the chosen image to the TextureRect
 	if selected_texture != null:
@@ -221,6 +245,7 @@ func _check_win_condition() -> void:
 		if val != 0:
 			return 
 	
+	boiling_sound.playing = false
 	print("Level Complete! All variables are 0!")
 	var final_score = score_manager.calculate_final_score()
 	score_manager.commit_final_score(final_score)
@@ -261,6 +286,10 @@ func _on_restart_pressed() -> void:
 	_toggle_pause()
 	load_level(current_level_index)
 
+func _on_menu_pressed() -> void:
+	_toggle_pause()
+	get_tree().change_scene_to_file("res://scenes/welcomeScreen.tscn")
+
 # Audio
 func _update_background_audio() -> void:
 	# 1. Find the highest number currently in the array (0 to 5)
@@ -273,3 +302,22 @@ func _update_background_audio() -> void:
 	
 	# 3. Convert the percentage to Decibels and apply it
 	background_sound.volume_db = linear_to_db(volume_percent)
+
+func _update_boiling_audio() -> void:
+	# Safety check: if there are no bars, mute the sound
+	if bars.is_empty():
+		boiling_sound.volume_db = linear_to_db(0.0)
+		return
+		
+	var max_boil: float = 0.0
+	
+	# 1. Loop through all the bars to find the absolute highest boil_level
+	for bar in bars:
+		if bar.boil_level > max_boil:
+			max_boil = bar.boil_level
+			
+	# 2. Convert the max boil (0.0 to 100.0) to a percentage (0.0 to 1.0)
+	var volume_percent: float = max_boil / 100.0
+	
+	# 3. Convert that percentage to Decibels and apply it!
+	boiling_sound.volume_db = linear_to_db(volume_percent)

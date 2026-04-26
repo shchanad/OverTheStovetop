@@ -5,16 +5,20 @@ extends Node2D
 @onready var score_manager: ScoreManager = get_node("ScoreManager")
 
 func _ready():
-
 	var total = score_manager.calculate_final_score()
 	score_label.text = "TOTAL SCORE: " + str(total)
 	
-	if total > 10000:
-		title_label.text = "CULINARY GENIUS!"
-	elif total > 5000:
-		title_label.text = "KITCHEN SURVIVOR"
+	# Распределение титулов в зависимости от набранных очков
+	if total >= 40000: # 4 идеальных уровня или как-то так
+		title_label.text = "MOM'S FAVOURITE CHILD"
+	elif total >= 20000: # 2 идеальных уровня
+		title_label.text = "MOM WILL BE PROUD"
+	elif total >= 10000: 
+		title_label.text = "MESSED UP A BIT, BUT IT HAPPENS"
+	elif total >= 4000:
+		title_label.text = "ON THE VERGE OF FAILURE"
 	else:
-		title_label.text = "AT LEAST THE HOUSE IS STILL STANDING..."
+		title_label.text = "MOM'S DISAPPOINTMENT"
 
 func _on_menu_button_pressed():
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/welcomeScreen.tscn")
