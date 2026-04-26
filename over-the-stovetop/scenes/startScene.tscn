@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://tbng0hbhdku3" path="res://res/room_with_computer.png" id="1_fy3ou"]
 [ext_resource type="AudioStream" uid="uid://dda013kaqcbyl" path="res://res/background.mp3" id="2_0fxb6"]
 [ext_resource type="Texture2D" uid="uid://luedytn1w1by" path="res://res/phone.png" id="2_fs635"]
-[ext_resource type="Script" uid="uid://cqd0fb84agt5k" path="res://phone.gd" id="3_0fxb6"]
+[ext_resource type="Script" uid="uid://c4ew5ecji7u67" path="res://scripts/phone.gd" id="3_0fxb6"]
 [ext_resource type="Texture2D" uid="uid://dll5li8wpaswb" path="res://res/phonecalling.png" id="4_3887w"]
 [ext_resource type="AudioStream" uid="uid://dkf0k5adto4el" path="res://res/nokia-3310.mp3" id="5_4ol86"]
 [ext_resource type="FontFile" uid="uid://cg6x48yk4k3y" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="7_4ol86"]

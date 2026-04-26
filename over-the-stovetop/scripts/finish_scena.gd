@@ -20,5 +20,6 @@ func _ready():
 	else:
 		title_label.text = "MOM'S DISAPPOINTMENT"
 
-func _on_menu_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/welcomeScreen.tscn")
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		get_tree().change_scene_to_file("res://scenes/welcomeScreen.tscn")
