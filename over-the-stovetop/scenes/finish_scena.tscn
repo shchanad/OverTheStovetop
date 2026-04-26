@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7non7ix5kvpm"]
+
+[ext_resource type="Script" uid="uid://1dil7674arwa" path="res://scripts/finish_scena.gd" id="1_mr65g"]
+[ext_resource type="Texture2D" uid="uid://ru7we366rh05" path="res://res/background_finish.png" id="2_nugba"]
+[ext_resource type="Texture2D" uid="uid://k2ajg1hlow1a" path="res://res/89c540b3c3b1d84e3fd9026ff6abdeb2.jpg" id="3_tnlw3"]
+[ext_resource type="Texture2D" uid="uid://dcn7kg2pkc2up" path="res://res/tarelka_borscha.png" id="4_0kqme"]
+[ext_resource type="Texture2D" uid="uid://d4mlusod5ik5e" path="res://res/manka.png" id="5_ykrp7"]
+[ext_resource type="Texture2D" uid="uid://8c8fhvise85r" path="res://res/teacup.png" id="6_xabtn"]
+[ext_resource type="Texture2D" uid="uid://dcu6stls8c85a" path="res://res/coffeecup.png" id="7_j1aus"]
+[ext_resource type="Texture2D" uid="uid://bbgtgcwgxsdyc" path="res://res/sticker2.png" id="8_0nmvq"]
+[ext_resource type="Texture2D" uid="uid://b7vwhwvuaqtut" path="res://res/cat.png" id="9_xxffm"]
+[ext_resource type="Script" uid="uid://b036pndpadvle" path="res://scripts/ScoreManager.gd" id="10_nugba"]
+[ext_resource type="FontFile" uid="uid://dnn7innfr15hi" path="res://fonts/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="10_tnlw3"]
+
+[node name="FinishScena" type="Node2D"]
+script = ExtResource("1_mr65g")
+
+[node name="BackgroundFinish" type="Sprite2D" parent="."]
+position = Vector2(543, 340)
+scale = Vector2(0.5976562, 0.5976562)
+texture = ExtResource("2_nugba")
+
+[node name="poster" type="Sprite2D" parent="."]
+position = Vector2(259, 275)
+scale = Vector2(0.71418065, 0.7141808)
+texture = ExtResource("3_tnlw3")
+
+[node name="TarelkaBorscha2" type="Sprite2D" parent="."]
+position = Vector2(870.99994, 467)
+rotation = -3.0453606
+scale = Vector2(0.29583803, 0.29583803)
+texture = ExtResource("4_0kqme")
+
+[node name="TarelkaBorscha" type="Sprite2D" parent="."]
+position = Vector2(427.00006, 535)
+scale = Vector2(0.4300272, 0.4300272)
+texture = ExtResource("4_0kqme")
+
+[node name="Manka" type="Sprite2D" parent="."]
+position = Vector2(618, 445.00003)
+scale = Vector2(0.19120377, 0.19120377)
+texture = ExtResource("5_ykrp7")
+
+[node name="Teacup2" type="Sprite2D" parent="."]
+position = Vector2(733, 526)
+rotation = 1.7294925
+scale = Vector2(0.11295417, 0.112954184)
+texture = ExtResource("6_xabtn")
+
+[node name="Teacup" type="Sprite2D" parent="."]
+position = Vector2(501, 381)
+scale = Vector2(0.11295419, 0.112954184)
+texture = ExtResource("6_xabtn")
+
+[node name="Coffeecup" type="Sprite2D" parent="."]
+position = Vector2(571, 584)
+scale = Vector2(0.11295419, 0.112954184)
+texture = ExtResource("7_j1aus")
+
+[node name="Sticker2" type="Sprite2D" parent="."]
+position = Vector2(741, 141.99998)
+scale = Vector2(0.9225544, 0.8172555)
+texture = ExtResource("8_0nmvq")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 565.0
+offset_top = 208.0
+offset_right = 876.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("10_tnlw3")
+theme_override_font_sizes/font_size = 32
+
+[node name="ResultTitle" type="Label" parent="."]
+offset_left = 641.0
+offset_top = 95.0
+offset_right = 921.0
+offset_bottom = 206.0
+theme_override_colors/font_color = Color(0.100749426, 0.13725612, 0.32565793, 1)
+theme_override_fonts/font = ExtResource("10_tnlw3")
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 3
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("10_nugba")
+
+[node name="Cat" type="Sprite2D" parent="."]
+position = Vector2(1017, 483)
+scale = Vector2(0.31156316, 0.31156316)
+texture = ExtResource("9_xxffm")

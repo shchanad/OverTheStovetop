@@ -238,7 +238,7 @@ func _on_next_button_pressed() -> void:
 		current_level_index += 1
 		load_level(current_level_index)
 	else:
-		print("All levels completed!")
+		get_tree().change_scene_to_file("res://scenes/finish_scena.tscn")
 
 # PAUSE
 func _toggle_pause() -> void:

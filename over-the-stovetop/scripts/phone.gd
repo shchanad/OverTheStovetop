@@ -19,17 +19,15 @@ var is_ringing: bool = false
 var is_talking: bool = false
 var current_line_index: int = 0
 
-# Переменная для шагов ПОСЛЕ разговора
-# 0 - разговор, 1 - "черт забыл", 2 - правила
 var intro_step: int = 0
 
 var dialogue_lines: Array[String] = [
-	"Haló, spáči! Už ses probudil?",
-	"Volám jen pro jistotu: vypnul jsi sporák, když jsi vstal?",
-	"Nechala jsem ti tam ohřívat oběd a hned běžela do práce.",
-	"To jsi hodný! Už jsem si začíнала dělat starosti.",
-	"Za chvíli budu doma, končím směnu.",
-	"Tak se běž umýt, až přijdu, budeme večeřet. Pa!"	
+	"Hello, sleepyhead! Are you up yet?",
+	"Just calling to make sure — did you turn off the stove when you got up?",
+	"I left your lunch warming up there and rushed straight to work.",
+	"Good boy! I was starting to get worried.",
+	"I'll be home soon, my shift is ending.",
+	"Go get washed up then, when I get back we'll have dinner. Bye!"	
 ]
 
 func _ready() -> void:
@@ -41,8 +39,8 @@ func _ready() -> void:
 	click_area.input_event.connect(_on_phone_clicked)
 	
 	dialogue_ui.visible = false
-	forgot_label.visible = false # Скрываем в начале
-	rules_panel.visible = false  # Скрываем в начале
+	forgot_label.visible = false
+	rules_panel.visible = false
 
 func _process(_delta: float) -> void:
 	if is_ringing:
@@ -77,7 +75,7 @@ func start_dialogue() -> void:
 	is_talking = true
 	current_line_index = 0
 	dialogue_ui.visible = true
-	closeup_phone.visible = true # Телефон виден
+	closeup_phone.visible = true
 	show_current_line()
 
 func show_current_line() -> void:
