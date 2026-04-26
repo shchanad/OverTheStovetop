@@ -9,7 +9,7 @@ extends Node2D
 @export var max_y: float = -20.0
 
 func _ready():
-
+	
 	var img = Image.create(16, 16, false, Image.FORMAT_RGBA8)
 	for y in range(16):
 		for x in range(16):
@@ -19,21 +19,20 @@ func _ready():
 	overflow.texture = ImageTexture.create_from_image(img)
 
 	overflow.emitting = false
-	overflow.z_index = 20 
-	overflow.modulate = Color(1, 1, 1, 1) 
+	overflow.z_index = 20
+	overflow.modulate = Color(1, 1, 1, 1)
 	overflow.show_behind_parent = false
-
-	overflow.amount = 40  
-	overflow.lifetime = 1.0   
+	
+	overflow.amount = 40 
+	overflow.lifetime = 1.0
 	
 	overflow.direction = Vector2(0, -1)
-	overflow.spread = 90.0      
-
+	overflow.spread = 90.0
+	
 	overflow.initial_velocity_min = 10.0 
 	overflow.initial_velocity_max = 30.0 
 	
 	overflow.gravity = Vector2(0, 500) 
-	
 	overflow.scale_amount_min = 0.8
 	overflow.scale_amount_max = 2.0
 	
@@ -46,25 +45,27 @@ func _ready():
 	overflow.emission_shape = CPUParticles2D.EMISSION_SHAPE_POINTS
 	
 	var points = PackedVector2Array()
-	var num_points = 50        
-	var radius_x = 40.0         
-	var radius_y = 10.0         
+	var num_points = 50         
+	var radius_x = 140.0        
+	var radius_y = 30.0          
 	
 	for i in range(num_points):
 		var angle = (float(i) / num_points) * TAU
+
 		var pos = Vector2(cos(angle) * radius_x, sin(angle) * radius_y)
 		points.append(pos)
 	
 	overflow.emission_points = points
 
 	overflow.direction = Vector2(0, -1) 
-	overflow.spread = 180.0    
+	overflow.spread = 180.0
 	
 	overflow.initial_velocity_min = 5.0
 	overflow.initial_velocity_max = 20.0
 	overflow.gravity = Vector2(0, 400)
 
 func _process(_delta):
+	
 	if not progress_bar: return
 	
 	var boil_value = progress_bar.value
@@ -85,7 +86,7 @@ func _process(_delta):
 		
 		if food_sprite:
 			overflow.modulate = food_sprite.modulate.lightened(0.3)
-		overflow.modulate.a = 1.0
+		overflow.modulate.a = 1.0 
 		
 		position.x = randf_range(-1, 1)
 	else:
